@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+#ZACK ZACK ZACK
+config/database.yml
+Gemfile
+
+.gitignore
