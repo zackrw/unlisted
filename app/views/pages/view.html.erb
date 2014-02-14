@@ -1,0 +1,52 @@
+
+<div class="page centered">
+    <div class="top">
+        <h1 class="name left"><%= @store[:name] %></h1>
+        <h3 class="phone right"><%= @store[:phone] %></h3>
+        <div class="clearfix"></div>
+    </div>
+    <div class="banner centered">
+        <div class="collage">
+            <img src="/assets/collage1.jpg" width="160" alt="" />
+            <img src="/assets/collage2.jpg" width="160" alt="" />
+            <img src="/assets/collage3.jpeg" width="160" alt="" />
+            <img src="/assets/collage4.jpeg" width="160" alt="" />
+            <img src="/assets/collage5.jpeg" width="160" alt="" />
+            <img src="/assets/collage6.jpg" width="160" alt="" />
+            <img src="/assets/collage7.jpeg" width="160" alt="" />
+            <img src="/assets/collage8.jpg" width="160" alt="" />
+            <img src="/assets/collage9.jpg" width="160" alt="" />
+            <img src="/assets/collage10.jpeg" width="160" alt="" />
+            <img src="/assets/collage11.jpg" width="160" alt="" />
+            <img src="/assets/collage12.jpeg" width="160" alt="" />
+        </div>
+        <div class="collage-overlay"></div>
+        <h3 class="slogan text-centered"><%= @store[:slogan] %></h3>
+        <div class="clearfix"></div>
+    </div>
+    <div class="bottom">
+        <div class="bottom-left left">
+            <div class="status">
+                <h3 class="updates-heading">Updates</h3>
+                <div class="status-text"><%= @store[:status] %></div>
+            </div>
+            <div class="hours">
+                <h3 class="hours-heading">Business Hours</h3>
+                <% @store[:hours].each do |h| %>
+                    <div class="hour"><%= h[:title] %>: <%= h[:value] %></div>
+                <% end %>
+            </div>
+        </div>
+        <div class="bottom-right right">
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14526.10955012157!2d54.36974317812556!3d24.46717726079836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e440f723ef2b9%3A0xc7cc2e9341971108!2sAbu+Dhabi!5e0!3m2!1sen!2s!4v1392397196802" width="480" height="360" frameborder="0" style="border:0"></iframe>
+            </div>
+            <div class="address">
+                <%= @store[:location] %>,
+                <%= @store[:city] %>,
+                <%= @store[:country] %>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

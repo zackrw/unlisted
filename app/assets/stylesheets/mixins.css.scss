@@ -1,0 +1,36 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    -o-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin box-sizing($n) {
+    -webkit-box-sizing: $n;
+    -moz-box-sizing: $n;
+    -ms-box-sizing: $n;
+    -o-box-sizing: $n;
+    box-sizing: $n;
+}
+
+@mixin box-shadow($x, $y, $blur, $stretch, $color) {
+    -moz-box-shadow: $x $y $blur $stretch $color;
+    -webkit-box-shadow: $x $y $blur $stretch $color;
+    -o-box-shadow: $x $y $blur $stretch $color;
+    -ms-box-shadow: $x $y $blur $stretch $color;
+    box-shadow: $x $y $blur $stretch $color;
+}
+
+@mixin shadow-border() {
+    @include box-shadow(0, 0, 0, 2px, rgba(0, 0, 0, 0.1));
+}
+
+@mixin text-shadow($x, $y, $blur, $color) {
+    -moz-text-shadow: $x $y $blur $color;
+    -webkit-text-shadow: $x $y $blur $color;
+    -o-text-shadow: $x $y $blur $color;
+    -ms-text-shadow: $x $y $blur $color;
+    text-shadow: $x $y $blur $color;
+}
+
