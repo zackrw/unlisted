@@ -22,8 +22,8 @@
     box-shadow: $x $y $blur $stretch $color;
 }
 
-@mixin shadow-border() {
-    @include box-shadow(0, 0, 0, 2px, rgba(0, 0, 0, 0.1));
+@mixin shadow-border($color) {
+    @include box-shadow(0, 0, 0, 2px, $color);
 }
 
 @mixin text-shadow($x, $y, $blur, $color) {
