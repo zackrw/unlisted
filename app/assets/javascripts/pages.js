@@ -38,18 +38,27 @@ $(function() {
       $(this).addClass('selected');
       filterPages($(this).attr('data-category'));
     }
+    else {
+      filter.removeClass('selected');
+      filterPages('all');
+    }
   });
 
   function filterPages(category) {
-    pagePreview.each(function(index, pagePreviewEl) {
-      if ($(pagePreviewEl).attr('data-category') !== category) {
-        $(pagePreviewEl).hide();
-      }
-      else {
-        $(pagePreviewEl).show();
-      }
-    });
+    if (category === 'all') {
+      pagePreview.show();
+    }
+    else {
+      pagePreview.each(function(index, pagePreviewEl) {
+        if ($(pagePreviewEl).attr('data-category') !== category) {
+          $(pagePreviewEl).hide();
+        }
+        else {
+          $(pagePreviewEl).show();
+        }
+      });
 
+    }
   }
 
 });

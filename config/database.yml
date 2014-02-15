@@ -1,0 +1,28 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: unlisted_development
+  pool: 5
+  username: colin
+  password: password
+  host: localhost
+  port: 5433
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: unlisted_test
+  pool: 5
+  username: colin
+  password: password
+  host: localhost
+  port: 5433
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: unlisted_production
+  pool: 5
+  username: colin
+  password: password
+  host: localhost

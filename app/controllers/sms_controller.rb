@@ -63,6 +63,7 @@ class SmsController < ApplicationController
     end
     if store.next == @@fields.length
       #Setup complete!
+      store.on_profile_complete
       return "Congratulations you've created a website! Send text messages to update your business status"
     else
       return generateReply(store.next)
