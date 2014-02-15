@@ -1,4 +1,4 @@
-<div class="page centered">
+<div class="home centered">
     <div class="top">
         <h1 class="left">UAE Pages</h1>
         <h3 class="right">Putting the UAE online.</h3>
@@ -8,24 +8,29 @@
         <input type="text" class="search-box" placeholder="search">
     </div>
     <div class="filters">
+        <h3 class="filters-heading left">Filter by category:</h3>
         <% @categories.each do |c| %>
-            <div class="filter" data-category="<%= c %>"><%= c %></div>
+            <div class="filter left" data-category="<%= c %>"><%= c %></div>
         <% end %>
+        <div class="clearfix"></div>
     </div>
     <div class="pages">
         <% @pages.each do |p| %>
-            <div class="page-preview" data-name="<%= p[:name] %>"
-                                      data-phone="<%= p[:phone] %>"
-                                      data-slogan="<%= p[:slogan] %>"
-                                      data-status="<%= p[:status] %>"
-                                      data-location="<%= p[:location] %>"
-                                      data-city="<%= p[:city] %>"
-                                      data-country="<%= p[:country] %>"
-                                      data-category="<%= p[:category] %>">
+            <a href="/view/<%= p[:subdomain] %>">
+                <div class="page-preview" data-name="<%= p[:name] %>"
+                                          data-phone="<%= p[:phone] %>"
+                                          data-slogan="<%= p[:slogan] %>"
+                                          data-status="<%= p[:status] %>"
+                                          data-location="<%= p[:location] %>"
+                                          data-city="<%= p[:city] %>"
+                                          data-country="<%= p[:country] %>"
+                                          data-category="<%= p[:category] %>">
 
-                <div class="page-name"><%= p[:name] %></div>
-                <div class="page-phone"><%= p[:phone] %></div>
-            </div>
+                    <div class="page-name left"><%= p[:name] %></div>
+                    <div class="page-phone right"><%= p[:phone] %></div>
+                    <div class="clearfix"></div>
+                </div>
+            </a>
         <% end %>
     </div>
 </div>

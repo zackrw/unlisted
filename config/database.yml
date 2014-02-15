@@ -3,7 +3,7 @@ development:
   encoding: unicode
   database: unlisted_development
   pool: 5
-  username: harrison
+  username: zack
   password:
   host: localhost
 
@@ -12,7 +12,7 @@ test:
   encoding: unicode
   database: unlisted_test
   pool: 5
-  username: harrison
+  username: zack
   password:
   host: localhost
 
@@ -21,6 +21,6 @@ production:
   encoding: unicode
   database: unlisted_production
   pool: 5
-  username: harrison
+  username: zack
   password:
   host: localhost

@@ -171,3 +171,3417 @@ Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 03:55:12 +0400
 
 
 Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 03:55:12 +0400
+  [1m[36m (1.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1.4ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateStores (20140215000857)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (2.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateStores (20140215000857)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.8ms)[0m  [1mCREATE TABLE "stores" ("id" serial primary key, "phone" character varying(255), "name" character varying(255), "slogan" character varying(255), "status" character varying(255), "location" character varying(255), "city" character varying(255), "country" character varying(255), "category_id" character varying(255), "latitude" float, "longitude" float, "hours" json, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.3ms)[0m  CREATE INDEX "index_stores_on_category_id" ON "stores" ("category_id")
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140215000857"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+Migrating to CreateCategories (20140215000911)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (5.1ms)[0m  CREATE TABLE "categories" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140215000911"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+Migrating to CreateTags (20140215000916)
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (2.6ms)[0m  CREATE TABLE "tags" ("id" serial primary key, "name" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140215000916"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+Migrating to CreateStoretags (20140215000942)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateStoretags (20140215000942)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (3.7ms)[0m  [1mCREATE TABLE "storetags" ("id" serial primary key, "store_id" integer, "tag_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE INDEX "index_storetags_on_store_id" ON "storetags" ("store_id")
+  [1m[36m (1.0ms)[0m  [1mCREATE INDEX "index_storetags_on_tag_id" ON "storetags" ("tag_id")[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140215000942"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 10:58:48 +0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 1331ms (Views: 1279.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 10:58:50 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 10:58:50 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 10:58:50 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 10:58:50 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 10:58:50 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 10:58:50 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 10:58:50 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 10:58:59 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 10:59:03 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 10:59:03 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 10:59:03 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 10:59:03 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 10:59:03 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 10:59:03 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 10:59:03 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 10:59:03 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 10:59:29 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 155ms (Views: 152.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 10:59:29 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 10:59:29 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 10:59:29 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 10:59:29 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 10:59:29 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 10:59:29 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 10:59:29 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:00:14 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 211ms (Views: 208.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:00:15 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:00:15 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:00:15 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:00:15 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:00:15 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:00:15 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:00:15 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:02:05 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 181ms (Views: 179.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:05 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:02:05 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:05 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:05 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:05 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:05 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:02:05 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:02:19 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 226ms (Views: 223.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:19 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:19 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:19 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:19 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:02:19 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:19 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:02:19 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:02:38 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 147ms (Views: 127.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:39 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:02:39 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:39 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:39 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:39 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:02:39 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:02:39 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:03:47 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 211ms (Views: 205.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:03:48 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:03:48 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:03:48 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:03:48 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:03:48 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:03:48 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:03:48 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:05:38 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 137ms (Views: 136.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:07:10 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:07:30 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 236ms (Views: 235.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:07:31 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 194ms (Views: 192.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:07:41 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:08:03 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 90ms (Views: 88.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:08:27 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 112ms (Views: 111.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:08:47 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 108ms (Views: 106.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:08:55 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 150ms (Views: 148.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:09:09 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:09:10 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:09:10 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:09:10 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:09:10 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:09:10 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:09:10 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:09:10 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:09:10 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 183ms (Views: 181.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:09:21 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 196ms (Views: 195.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:09:30 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:09:43 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 123ms (Views: 121.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:09:44 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 113ms (Views: 112.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:10:02 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:10:20 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 189ms (Views: 186.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:10:20 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:20 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:20 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:20 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:20 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:20 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:10:20 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:10:20 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:10:21 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:10:21 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:10:21 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:10:21 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:10:21 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:10:21 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:10:21 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:10:21 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:10:21 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:10:21 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:10:21 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:10:54 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:11:20 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 277ms (Views: 275.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:11:30 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 203ms (Views: 194.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:12:11 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:12:12 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:12:12 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:12:12 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:12:12 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:12:12 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:12:12 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:13:14 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:13:16 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:13:21 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:13:46 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:16:21 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 11ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:16:21 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:21 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:21 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:21 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:21 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:21 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:16:21 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:16:21 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:16:22 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:16:22 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:16:22 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:16:22 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:16:22 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:16:22 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:16:22 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:16:22 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:16:22 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:16:22 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:16:22 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:16:23 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:16:24 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 9ms (Views: 6.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:16:40 +0400
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 11:16:42 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 403 Forbidden in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 11:16:42 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:16:42 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:42 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:16:42 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:42 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:42 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:42 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:42 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:16:42 +0400
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 11:16:50 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 403 Forbidden in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 11:16:50 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:16:50 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 23ms (Views: 21.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:51 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:51 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:51 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:51 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:16:51 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:16:51 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:21:18 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 236ms (Views: 234.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:21:18 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:21:18 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:21:18 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:21:18 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:21:18 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:21:18 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:21:18 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:22:46 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 284ms (Views: 282.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:22:47 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:22:47 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:22:47 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:22:47 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:22:47 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:22:47 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:22:47 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:22:54 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 184ms (Views: 182.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:22:54 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:22:54 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:22:54 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:22:54 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:22:54 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:22:54 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:22:54 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:23:11 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 205ms (Views: 195.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:11 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:11 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:11 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:11 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:11 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:23:11 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:23:11 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:23:35 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 282ms (Views: 280.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:35 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:35 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:23:35 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:35 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:35 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:35 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:23:35 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:23:45 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 232ms (Views: 229.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:45 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:45 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:23:45 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:45 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:45 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:45 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:23:45 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:23:53 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 29ms (Views: 28.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:23:53 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:53 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:53 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:53 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:53 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:23:53 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:53 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:23:58 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 254ms (Views: 252.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:58 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:23:58 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:58 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:58 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:58 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:23:58 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:23:58 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:24:40 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 181ms (Views: 179.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:24:40 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:24:40 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:24:40 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:24:40 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:24:40 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:24:40 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:24:40 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:24:50 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 213ms (Views: 211.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:24:51 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:24:51 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:24:51 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:24:51 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:24:51 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:24:51 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:24:51 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:25:16 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 26ms (Views: 24.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:25:16 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:16 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:17 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:17 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:17 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:17 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:25:17 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:25:45 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 246ms (Views: 241.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:25:45 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:45 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:45 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:45 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:45 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:25:45 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:45 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:25:55 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 316ms (Views: 314.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:55 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:55 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:25:55 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:55 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:55 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:25:55 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:25:55 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:26:28 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 50ms (Views: 48.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:26:28 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:26:28 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:26:28 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:26:28 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:26:28 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:26:28 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:26:28 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:27:13 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:27:13 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:27:13 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:27:13 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:27:13 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:27:13 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:27:13 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:27:13 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:28:44 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:28:44 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:28:44 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:28:44 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:28:44 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:28:44 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:28:45 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:28:45 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:28:57 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 17ms (Views: 14.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:28:57 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:28:57 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:28:57 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:28:57 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:28:57 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:28:57 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:28:57 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:29:20 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (27.6ms)
+Completed 200 OK in 319ms (Views: 317.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:29:20 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:29:20 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:29:20 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:29:20 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:29:20 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:29:20 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:29:20 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:29:31 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 202ms (Views: 193.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:29:31 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:29:31 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:29:31 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:29:31 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:29:31 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:29:31 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:29:32 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:30:17 +0400
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 11:30:41 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 403 Forbidden in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 11:30:41 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:30:42 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:30:42 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:30:42 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:30:42 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:30:42 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:30:42 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:30:42 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 8ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 11:31:11 +0400
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 11:46:12 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 403 Forbidden in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 11:46:13 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:46:13 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 16ms (Views: 8.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:46:13 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:46:13 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:46:13 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:46:13 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:46:13 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:46:13 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:46:13 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:53:52 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 177ms (Views: 173.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:53:53 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:53:53 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:53:53 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:53:53 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:53:53 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:53:53 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:53:53 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:54:21 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 377ms (Views: 375.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:54:22 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:54:22 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:54:22 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:54:22 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:54:22 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:54:22 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:54:22 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:54:35 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 250ms (Views: 126.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:54:35 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:54:35 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:54:35 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:54:35 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:54:35 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:54:35 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:54:35 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:56:46 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 144ms (Views: 141.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:56:46 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:56:46 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:56:46 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:56:46 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:56:46 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:56:46 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:56:46 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:57:21 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 91ms (Views: 89.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:57:21 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:57:21 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:57:21 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:57:21 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:57:21 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:57:21 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:57:21 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:58:16 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 172ms (Views: 167.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:58:16 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:16 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:17 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:17 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:17 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:58:17 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:17 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:58:27 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 180ms (Views: 157.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:58:27 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:27 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:27 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:27 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:58:27 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:27 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:27 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:58:59 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 119ms (Views: 117.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:59 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:58:59 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:59 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:59 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:59 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:58:59 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:58:59 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:59:13 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 146ms (Views: 144.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:59:13 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:59:13 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:59:13 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:59:13 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:59:13 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:59:13 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:59:13 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 11:59:56 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 118ms (Views: 116.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 11:59:56 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 11:59:56 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 11:59:56 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 11:59:56 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 11:59:56 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 11:59:56 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 11:59:56 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:00:08 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:00:08 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:00:08 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:00:08 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:00:08 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:00:08 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:00:08 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:00:08 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:00:29 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 283ms (Views: 277.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:00:30 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:00:30 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:00:30 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:00:30 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:00:30 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:00:30 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:00:30 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:01:20 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 141ms (Views: 139.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:01:21 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:01:21 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:01:21 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:01:21 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:01:21 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:01:21 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:01:21 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:01:40 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 256ms (Views: 250.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:01:40 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:01:40 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:01:40 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:01:40 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:01:40 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:01:40 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:01:40 +0400
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:07:50 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 233ms (Views: 225.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:07:51 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:07:51 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:07:51 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:07:51 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:07:51 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:07:51 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:07:51 +0400
+
+
+Started GET "/view/" for 127.0.0.1 at 2014-02-15 12:07:56 +0400
+
+ActionController::RoutingError (No route matches [GET] "/view"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/zack/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/zack/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/zack/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (16.8ms)
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (50.8ms)
+
+
+Started GET "/view/" for 127.0.0.1 at 2014-02-15 12:07:56 +0400
+
+ActionController::RoutingError (No route matches [GET] "/view"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/zack/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/zack/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/zack/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.1ms)
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.4ms)
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (27.7ms)
+
+
+Started GET "/view/" for 127.0.0.1 at 2014-02-15 12:08:33 +0400
+
+ActionController::RoutingError (No route matches [GET] "/view"):
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/zack/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /Users/zack/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /Users/zack/.rvm/rubies/ruby-2.0.0-p353/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (2.1ms)
+  Rendered /Users/zack/.rvm/gems/ruby-2.0.0-p353/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (22.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:08:43 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 11ms (Views: 8.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:08:43 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:08:43 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:08:43 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:08:43 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:08:43 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:08:43 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:08:43 +0400
+
+
+Started GET "/view/jakeskitchen" for 127.0.0.1 at 2014-02-15 12:08:45 +0400
+Processing by PagesController#goview as HTML
+  Parameters: {"subdomain"=>"jakeskitchen"}
+Redirected to http://jakeskitchen.localhost:3000
+Completed 403 Forbidden in 3ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/view/jakeskitchen" for 127.0.0.1 at 2014-02-15 12:08:45 +0400
+Processing by PagesController#goview as HTML
+  Parameters: {"subdomain"=>"jakeskitchen"}
+Redirected to http://jakeskitchen.localhost:3000
+Completed 302 Found in 11ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:09:23 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:09:23 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:23 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:23 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:09:23 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:23 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:23 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:23 +0400
+
+
+Started GET "/assets/collage1.jpg" for 127.0.0.1 at 2014-02-15 12:09:23 +0400
+
+
+Started GET "/assets/collage2.jpg" for 127.0.0.1 at 2014-02-15 12:09:24 +0400
+
+
+Started GET "/assets/collage3.jpeg" for 127.0.0.1 at 2014-02-15 12:09:24 +0400
+
+
+Started GET "/assets/collage4.jpeg" for 127.0.0.1 at 2014-02-15 12:09:24 +0400
+
+
+Started GET "/assets/collage5.jpeg" for 127.0.0.1 at 2014-02-15 12:09:24 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 12:09:24 +0400
+
+
+Started GET "/assets/collage6.jpg" for 127.0.0.1 at 2014-02-15 12:09:24 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 12:09:24 +0400
+
+
+Started GET "/assets/collage7.jpeg" for 127.0.0.1 at 2014-02-15 12:09:24 +0400
+
+
+Started GET "/assets/collage8.jpg" for 127.0.0.1 at 2014-02-15 12:09:24 +0400
+
+
+Started GET "/assets/collage9.jpg" for 127.0.0.1 at 2014-02-15 12:09:24 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 12:09:24 +0400
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 12:09:25 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 403 Forbidden in 13ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 12:09:25 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:09:25 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:09:25 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:25 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:25 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:25 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:09:25 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:25 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:25 +0400
+
+
+Started GET "/view/jakeskitchen" for 127.0.0.1 at 2014-02-15 12:09:27 +0400
+Processing by PagesController#goview as HTML
+  Parameters: {"subdomain"=>"jakeskitchen"}
+Redirected to http://jakeskitchen.localhost:3000
+Completed 403 Forbidden in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/view/jakeskitchen" for 127.0.0.1 at 2014-02-15 12:09:27 +0400
+Processing by PagesController#goview as HTML
+  Parameters: {"subdomain"=>"jakeskitchen"}
+Redirected to http://jakeskitchen.localhost:3000
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:09:27 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:27 +0400
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 12:09:30 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 403 Forbidden in 12ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 12:09:30 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 302 Found in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:09:30 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:30 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:30 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:09:30 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:30 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:30 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:30 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:09:30 +0400
+
+
+Started GET "/view/jakeskitchen" for 127.0.0.1 at 2014-02-15 12:09:32 +0400
+Processing by PagesController#goview as HTML
+  Parameters: {"subdomain"=>"jakeskitchen"}
+Redirected to http://jakeskitchen.localhost:3000
+Completed 403 Forbidden in 20ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/view/jakeskitchen" for 127.0.0.1 at 2014-02-15 12:09:32 +0400
+Processing by PagesController#goview as HTML
+  Parameters: {"subdomain"=>"jakeskitchen"}
+Redirected to http://jakeskitchen.localhost:3000
+Completed 302 Found in 11ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:09:32 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:32 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:32 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:32 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:32 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:32 +0400
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 12:09:34 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 403 Forbidden in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 12:09:34 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:09:34 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 9ms (Views: 7.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:34 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:34 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:34 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:09:35 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:09:35 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:35 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:35 +0400
+
+
+Started GET "/view/jakeskitchen" for 127.0.0.1 at 2014-02-15 12:09:42 +0400
+Processing by PagesController#goview as HTML
+  Parameters: {"subdomain"=>"jakeskitchen"}
+Redirected to http://jakeskitchen.localhost:3000
+Completed 403 Forbidden in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/view/jakeskitchen" for 127.0.0.1 at 2014-02-15 12:09:42 +0400
+Processing by PagesController#goview as HTML
+  Parameters: {"subdomain"=>"jakeskitchen"}
+Redirected to http://jakeskitchen.localhost:3000
+Completed 302 Found in 9ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:09:42 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:42 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:42 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:42 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:42 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:09:42 +0400
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 12:10:09 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 403 Forbidden in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 12:10:09 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:10:09 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:10:10 +0400
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:10:10 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:10:10 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:10:10 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:10:10 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:10:10 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:10:10 +0400
+
+
+Started GET "/view/jakeskitchen" for 127.0.0.1 at 2014-02-15 12:11:03 +0400
+Processing by PagesController#goview as HTML
+  Parameters: {"subdomain"=>"jakeskitchen"}
+Redirected to http://jakeskitchen.localhost:3000
+Completed 403 Forbidden in 11ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/view/jakeskitchen" for 127.0.0.1 at 2014-02-15 12:11:03 +0400
+Processing by PagesController#goview as HTML
+  Parameters: {"subdomain"=>"jakeskitchen"}
+Redirected to http://jakeskitchen.localhost:3000
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:11:03 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/view.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 6ms (Views: 4.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:11:03 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:11:03 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:11:03 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:11:03 +0400
+
+
+Started GET "/assets/collage10.jpeg" for 127.0.0.1 at 2014-02-15 12:11:03 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:11:03 +0400
+
+
+Started GET "/assets/collage11.jpg" for 127.0.0.1 at 2014-02-15 12:11:03 +0400
+
+
+Started GET "/assets/collage12.jpeg" for 127.0.0.1 at 2014-02-15 12:11:03 +0400
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 12:14:32 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 403 Forbidden in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/home" for 127.0.0.1 at 2014-02-15 12:14:32 +0400
+Processing by PagesController#gohome as HTML
+Redirected to http://localhost:3000
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-15 12:14:32 +0400
+Processing by PagesController#catchall as HTML
+  Rendered pages/home.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.css?body=1" for 127.0.0.1 at 2014-02-15 12:14:32 +0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-02-15 12:14:32 +0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-02-15 12:14:32 +0400
+
+
+Started GET "/assets/pages.js?body=1" for 127.0.0.1 at 2014-02-15 12:14:32 +0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-02-15 12:14:32 +0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-02-15 12:14:32 +0400
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-02-15 12:14:32 +0400

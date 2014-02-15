@@ -4,6 +4,8 @@ Unlisted::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'pages#catchall'
+  get '/home' => 'pages#gohome'
+  get '/view/:subdomain' => 'pages#goview'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
