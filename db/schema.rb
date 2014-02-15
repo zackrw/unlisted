@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140215000942) do
+ActiveRecord::Schema.define(version: 20140215080117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,19 +36,20 @@ ActiveRecord::Schema.define(version: 20140215000942) do
     t.json     "hours"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "subdomain"
   end
 
   add_index "stores", ["category_id"], name: "index_stores_on_category_id", using: :btree
 
-  create_table "storetags", force: true do |t|
+  create_table "stores_tags", force: true do |t|
     t.integer  "store_id"
     t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "storetags", ["store_id"], name: "index_storetags_on_store_id", using: :btree
-  add_index "storetags", ["tag_id"], name: "index_storetags_on_tag_id", using: :btree
+  add_index "stores_tags", ["store_id"], name: "index_stores_tags_on_store_id", using: :btree
+  add_index "stores_tags", ["tag_id"], name: "index_stores_tags_on_tag_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"
