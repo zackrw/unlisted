@@ -20,6 +20,8 @@ class PagesController < ApplicationController
     threshold = 2
     if host_parts.include?('localhost')
       threshold = 1
+    elsif host_parts.include?('herokuapp')
+      threshold = 3
     end
     host_parts.length <= threshold
   end
@@ -29,7 +31,7 @@ class PagesController < ApplicationController
     if host_parts.include?('localhost')
       redirect_to('http://localhost:3000')
     else
-      redirect_to('http://unlisted.herokuapp.com')
+      redirect_to('http://jedappuae.herokuapp.com')
     end
   end
 
@@ -39,7 +41,7 @@ class PagesController < ApplicationController
     if host_parts.include?('localhost')
       redirect_to("http://#{subdomain}.localhost:3000")
     else
-      redirect_to("http://#{subdomain}.unlisted.herokuapp.com")
+      redirect_to("http://#{subdomain}.jedappuae.herokuapp.com")
     end
   end
 
