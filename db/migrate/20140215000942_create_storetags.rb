@@ -6,5 +6,7 @@ class CreateStoretags < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :storetags, :store_id
+    add_index :storetags, :tag_id
   end
 end
