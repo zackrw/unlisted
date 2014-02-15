@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   def i18n
     if session[:lang] == 'english'
-      @other_language = 'Arabic'
       @home = 'Home'
       @hours = 'Business Hours'
       @updates = 'Updates'
@@ -24,26 +23,29 @@ class ApplicationController < ActionController::Base
       @education = 'education'
       @business = 'business'
       @traditional = 'traditional'
+      
+      @other_language = 'عربي'
     else
-      @other_language = 'English'
-      @home = ''
-      @hours = 'Business Hours'
-      @updates = 'Updates'
-      @create_own = 'Text 000-000-0000 to create your own page!'
-      @slogan = 'Putting small businesses online'
-      @search = 'search'
-      @filter = 'Filter by category:'
+      @home = 'الرئيسية'
+      @hours = 'اوقات العمل'
+      @updates = 'تحديث'
+      @create_own = 'ارسالية 000-000-0000 لانشاءصفحتك الخاصة'
+      @slogan = ' وضع المؤسسات الصغرى على الانترنيت'
+      @search = 'بحث'
+      @filter = 'بحث حسب الفئة'
 
       # Categories
-      @restaurant = 'restaurant'
-      @pharmacy = 'pharmacy'
-      @electronics = 'electronics'
+      @restaurant = 'مطعم'
+      @pharmacy = 'صيدلية'
+      @electronics = 'إلكترونيات'
       @culture = 'ثقافة'
       @shopping = 'تسوّق'
       @govt = 'حكومة'
       @education = 'تعليم'
       @business = 'تجارة'
       @traditional = 'تقليدي'
+
+      @other_language = 'English'
     end
 
     @categories = [@restaurant, @pharmacy, @electronics, @culture, @shopping,
