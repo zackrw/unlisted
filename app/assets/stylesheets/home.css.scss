@@ -4,9 +4,7 @@ body.showing-home {
 }
 
 .home {
-    width: 960px;
     color: $super-light-grey;
-
 
     .top {
     }
@@ -42,7 +40,18 @@ body.showing-home {
         background-color: $highlighted-color;
         color: $super-light-grey;
     }
+    .header {
+        width: 960px;
+        padding-bottom: 20px;
+    }
     .pages {
+        background-color: #EAEAEA;
+        width: 100%;
+    }
+    .pages-container {
+        width: 960px;
+        padding-top: 20px;
+        padding-bottom: 200px;
     }
     .page-preview {
         width: 640px;
@@ -61,4 +70,16 @@ body.showing-home {
     .page-phone {
     }
 
+    .slogan {
+        font-style: italic;
+        margin: 0px;
+    }
+
+    h3 {
+        margin-top: 0px;
+    }
+
+    input[type=text] {
+        width: 100%
+    }
 }
