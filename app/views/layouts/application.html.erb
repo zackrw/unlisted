@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jed</title>
+  <title><%= @store && @store.name || 'Jed' %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -9,16 +9,16 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700' rel='stylesheet' type='text/css'>
 
   <meta name="description"
-        content="<%= @store.slogan || 'Jed puts small businesses online' %>">
-  <meta name="author" content="<%= @store.name || 'Jed' %>">
-  <meta property="og:title" content="<%= @store.name || 'Jed' %>">
-  <meta property="og:site_name" content="<%= @store.name || 'Jed' %>">
+        content="<%= @store && @store.slogan || 'Jed puts small businesses online' %>">
+  <meta name="author" content="<%= @store && @store.name || 'Jed' %>">
+  <meta property="og:title" content="<%= @store && @store.name || 'Jed' %>">
+  <meta property="og:site_name" content="<%= @store && @store.name || 'Jed' %>">
   <!--meta property="og:image" content="http://hackyale.com/img/logo.png"-->
   <meta property="og:url"
-        content="<%= "http://#{@store.subdomain}.jed.ae" || 'http://jed.ae' %>">
-  <meta property="og:type" content="<%= @store.category || 'company' %>">
+        content="<%= "http://#{@store && @store.subdomain}.jed.ae" || 'http://jed.ae' %>">
+  <meta property="og:type" content="<%= @store && @store.category || 'company' %>">
   <meta property="og:description"
-        content="<%= @store.slogan || 'Jed puts small businesses online' %>">
+        content="<%= @store && @store.slogan || 'Jed puts small businesses online' %>">
 </head>
 <body class="<%= @page_showing %>">
 
