@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: unlisted_development
+  pool: 5
+  username: <%= ENV['DB_UN'] %>
+  host: localhost
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: unlisted_test
+  pool: 5
+  username: <%= ENV['DB_UN'] %>
+  host: localhost
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: unlisted_production
+  pool: 5
+  username: <%= ENV['DB_UN'] %>
+  host: localhost
+  password:
