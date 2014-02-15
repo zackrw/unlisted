@@ -29,7 +29,11 @@
                                           data-country="<%= p[:country] %>"
                                           data-category="<%= p[:category] %>">
 
-                    <div class="page-name"><%= p[:name] %></div>
+                    <div class="page-name">
+                        <a href='<%=p[:subdomain]%>.<%=@domain%>' class='biz-name'>
+                            <%= p[:name] %>
+                        </a>
+                    </div>
                     <div class="page-phone"><%= p[:phone] %></div>
                 </div>
             <% end %>
