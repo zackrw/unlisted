@@ -65,37 +65,9 @@ class SmsController < ApplicationController
     field = @@fields[fieldId] 
     #Response is category id
     if field  == "category"
-      category = Category.find_by_id(response.to_i)
-      if category
-        response = category
-      else 
-        return {:valid => false, :error => "Category ID is not valid."}
-      end
+      return validateCategory(response)
     elsif field == "hours"
-      hoursJSON = []
-      #Iterate over day ranges
-      response.split(',').each do |entry|
-        if not entry.split(':').length == 2 
-          return {:valid => false, :error => "Day and hour ranges must be split with : ."}
-        end
-        #Get day range and hours value
-        value = entry.split(':')[1]
-        dayrange = entry.split(':')[0]
-        if not dayrange.split('-').length == 2 
-          return {:valid => false, :error => "Day range must be split with - ."}
-        end
-        #Get start and end day indices
-        startDay = @@days.index {|day| day.downcase.starts_with?(dayrange.split('-')[0].downcase)}
-        endDay = @@days.index {|day| day.downcase.starts_with?(dayrange.split('-')[1].downcase)}
-        if not startDay or not endDay
-          return {:valid => false, :error => "Day value(s) not valid."}
-        end
-        #Add to hours json array
-        (startDay..endDay).each do |i|
-          hoursJSON << {"title" => i, "value" => value}
-        end
-      end
-      response = hoursJSON
+      return validateHours(response)
     elsif field == "name" or field == "subdomain"
       if not response or response.length == 0
         return {:valid => false, :error => "Response cannot be empty."}
@@ -120,5 +92,41 @@ class SmsController < ApplicationController
       response = "Please enter your business " + field
     end
     return response
+  end
+
+  def validateCategory(response)
+    category = Category.find_by_id(response.to_i)
+      if category
+        return {:valid => true, :value => category}
+      else 
+        return {:valid => false, :error => "Category ID is not valid."}
+      end
+  end
+
+  def validateHours(response)
+      hoursJSON = []
+      #Iterate over day ranges
+      response.split(',').each do |entry|
+        if not entry.split(':').length == 2 
+          return {:valid => false, :error => "Day and hour ranges must be split with : ."}
+        end
+        #Get day range and hours value
+        value = entry.split(':')[1]
+        dayrange = entry.split(':')[0]
+        if not dayrange.split('-').length == 2 
+          return {:valid => false, :error => "Day range must be split with - ."}
+        end
+        #Get start and end day indices
+        startDay = @@days.index {|day| day.downcase.starts_with?(dayrange.split('-')[0].downcase)}
+        endDay = @@days.index {|day| day.downcase.starts_with?(dayrange.split('-')[1].downcase)}
+        if not startDay or not endDay
+          return {:valid => false, :error => "Day value(s) not valid."}
+        end
+        #Add to hours json array
+        (startDay..endDay).each do |i|
+          hoursJSON << {"title" => i, "value" => value}
+        end
+      end
+    return {:valid => true, :value => hoursJSON}
   end
 end
