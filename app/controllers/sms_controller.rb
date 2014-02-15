@@ -50,13 +50,6 @@ class SmsController < ApplicationController
       if not validatedResponse[:valid]
         return validatedResponse[:error] + " " + generateReply(store.next)
       else
-        if @@fields[store.next] == "neighborhood"
-          geoResult = Geocoder.search(response)
-          if geoResult.length > 0
-            store.lat = geoResult[0].latitude
-            store.lon = geoResult[1].longitude
-          end
-        end
         store.update({@@fields[store.next] => validatedResponse[:value], "next" => store.next+1})
       end
     end
@@ -111,8 +104,9 @@ class SmsController < ApplicationController
   end
 
   def validateHours(response)
-      hoursJSON = []
-      #Iterate over day ranges
+    hoursJSON = []
+    #Iterate over day ranges
+    if response.length() > 0
       response.split(',').each do |entry|
         if not entry.split(':').length == 2 
           return {:valid => false, :error => "Invalid day or hour range."}
@@ -134,6 +128,7 @@ class SmsController < ApplicationController
           hoursJSON << {"title" => i, "value" => value}
         end
       end
+    end
     return {:valid => true, :value => hoursJSON}
   end
 end
