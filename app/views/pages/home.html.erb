@@ -1,4 +1,4 @@
-<div class="page centered">
+<div class="home centered">
     <div class="top">
         <h1 class="left">UAE Pages</h1>
         <h3 class="right">Putting the UAE online.</h3>
@@ -8,9 +8,11 @@
         <input type="text" class="search-box" placeholder="search">
     </div>
     <div class="filters">
+        <h3 class="filters-heading left">Filter by category:</h3>
         <% @categories.each do |c| %>
-            <div class="filter" data-category="<%= c %>"><%= c %></div>
+            <div class="filter left" data-category="<%= c %>"><%= c %></div>
         <% end %>
+        <div class="clearfix"></div>
     </div>
     <div class="pages">
         <% @pages.each do |p| %>

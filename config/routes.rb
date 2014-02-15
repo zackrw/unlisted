@@ -4,6 +4,8 @@ Unlisted::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'pages#catchall'
+  get '/home' => 'pages#gohome'
+  get '/view/:subdomain' => 'pages#goview'
 
   get 'sms' => 'sms#index'
   post 'receive' => 'sms#receive'

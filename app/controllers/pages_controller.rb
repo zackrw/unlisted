@@ -2,44 +2,15 @@ class PagesController < ApplicationController
 
   def catchall
     if is_home?(request.host)
-      store = {
-        phone: '+71 971 340-3492',
-        name: 'Jake\'s Kitchen',
-        slogan: 'The best food ever',
-        status: 'Jake\'s is currently featuring a two for
-                 one special on margaritas.',
-        location: '26 Institute Way',
-        city: 'Abu Dhabi',
-        country: 'UAE',
-        category: 'food',
-        hours: [
-          { title: 'M-F', value: '8am - 9pm' },
-          { title: 'Sa', value: '10am - 7pm' },
-          { title: 'Su', value: '11am - 5pm' }
-        ]
-      }
+      @page_showing = 'showing-home'
       @categories = ['food', 'pharmacy', 'electronics']
-      @pages = [store, store, store, store, store, store, store]
+      @pages = Store.all
       render :template => 'pages/home'
     else
+      @page_showing = 'showing-page'
       page_name = request.host.split('.')[0]
-      @store = {
-        phone: '+71 971 340-3492',
-        name: 'Jake\'s Kitchen',
-        slogan: 'The best food ever',
-        status: 'Jake\'s is currently featuring a two for
-                 one special on margaritas.',
-        location: '26 Institute Way',
-        city: 'Abu Dhabi',
-        country: 'UAE',
-        hours: [
-          { title: 'M-F', value: '8am - 9pm' },
-          { title: 'Sa', value: '10am - 7pm' },
-          { title: 'Su', value: '11am - 5pm' }
-        ]
-      }
-      @category = 'food'
-      @tags = 'yummy, tasty, delicious'
+      @store = Store.where(subdomain: page_name).first
+      @category = @store.category.name
       render :template => 'pages/view'
     end
   end
@@ -53,13 +24,23 @@ class PagesController < ApplicationController
     host_parts.length <= threshold
   end
 
+  def gohome
+    host_parts = request.host.split('.')
+    if host_parts.include?('localhost')
+      redirect_to('http://localhost:3000')
+    else
+      redirect_to('http://unlisted.herokuapp.com')
+    end
+  end
+
+  def goview
+    host_parts = request.host.split('.')
+    subdomain = params[:subdomain]
+    if host_parts.include?('localhost')
+      redirect_to("http://#{subdomain}.localhost:3000")
+    else
+      redirect_to("http://#{subdomain}.unlisted.herokuapp.com")
+    end
+  end
+
 end
-
-
-
-
-
-
-
-
-
