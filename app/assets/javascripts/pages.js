@@ -7,6 +7,13 @@ $(function() {
   var searchBox = $('.search-box');
   var filter = $('.filter');
   var pagePreview = $('.page-preview');
+  var collageImg = $('.collage-img');
+
+  imagesLoaded(collageImg, function() {
+    collageImg.animate({
+      opacity: 1
+    }, 600);
+  });
 
   /*
    * Search functionality.
@@ -60,5 +67,13 @@ $(function() {
 
     }
   }
+
+  var map = $('.map');
+  var mapOptions = {
+    center: new google.maps.LatLng(map.attr('data-lat'), map.attr('data-long')),
+    zoom: 16
+  };
+  var mapEl = new google.maps.Map(map[0], mapOptions);
+
 
 });

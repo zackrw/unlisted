@@ -21,6 +21,7 @@ body.showing-home {
     }
 
     .search {
+        margin-top: 0;
     }
     .search-box {
         width: 640px;
@@ -33,7 +34,11 @@ body.showing-home {
         @include shadow-border(rgba(255, 255, 255, 0.9));
     }
     .filters {
-        margin-top: 5px;
+        margin-top: 15px;
+        margin-bottom: 0;
+        h3 {
+            margin-bottom: 0;
+        }
     }
     .filters-heading {
         margin-top: 1px;
@@ -91,6 +96,12 @@ body.showing-home {
     .slogan {
         font-style: italic;
         margin: 0px;
+        margin-left: 5px;
+    }
+
+    .slogan, .create {
+        margin-top: 50px;
+        font-weight: 300;
     }
 
     h3 {

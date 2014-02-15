@@ -1,5 +1,5 @@
 <div class="page centered">
-    <a href="/home"><div class="home-link"><%=@home%></div></a>
+    <a href="/home"><div class="home-link"><%= @home %></div></a>
     <div class="top">
         <h1 class="name left"><%= @store.name %></h1>
         <h3 class="phone right"><%= @store.phone %></h3>
@@ -9,7 +9,7 @@
         <div class="collage">
             <% (1..13).to_a.sort{ rand() - 0.5 }[0..11].each do |i| %>
                 <img src="/assets/collage-<%= @category %><%= i %>.jpg"
-                     width="160" height='160' alt="" />
+                     class="collage-img" width="160" height='160'>
             <% end %>
         </div>
         <div class="collage-overlay"></div>
@@ -25,13 +25,16 @@
             <div class="hours">
                 <h3 class="hours-heading"><%=@hours%></h3>
                 <% @store.hours.each do |h| %>
-                    <div class="hour"><%= h['title'] %>: <%= h['value'] %></div>
+                    <div class="hour">
+                        <%= ['M', 'Tu', 'W', 'Th', 'F', 'Sa', 'Su'][h['title']] %>:
+                        <%= h['value'] %>
+                    </div>
                 <% end %>
             </div>
         </div>
         <div class="bottom-right right">
-            <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14526.10955012157!2d54.36974317812556!3d24.46717726079836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e440f723ef2b9%3A0xc7cc2e9341971108!2sAbu+Dhabi!5e0!3m2!1sen!2s!4v1392397196802" width="480" height="360" frameborder="0" style="border:0"></iframe>
+            <div class="map" data-lat="<%= @store.latitude || '24.4667' %>"
+                             data-long="<%= @store.longitude || '54.3667' %>">
             </div>
             <div class="address">
                 <%= @store.location %>,
@@ -45,4 +48,5 @@
         <hr>
         <%= @create_own %>
     </div>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtw2Tt35lIP9sh2WA6cUYONONBp7GDvJA&sensor=false"></script>
 </div>
