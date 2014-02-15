@@ -5,8 +5,7 @@ class PagesController < ApplicationController
 
     if is_home?(request.host)
       @page_showing = 'showing-home'
-      @categories = [@food, @pharmacy, @electronics]
-      @pages = Store.all
+      @pages = Store.order(:name)
       render :template => 'pages/home'
     else
       @page_showing = 'showing-page'
