@@ -9,6 +9,12 @@ class SmsController < ApplicationController
   end
   
   def receive
+    response = processResponse(params[:phone],params[:response])
+
+    @form_params= {:phone => params[:phone], :message => response}
+    render(:action => :index);
+
+=begin
     puts "----------------------------------"
     puts "RECEIVING TEXT!"
     puts "----------------------------------"
@@ -28,6 +34,7 @@ class SmsController < ApplicationController
       :body => response
     )
     render :nothing => true
+=end
   end
   
   #Takes in a phone number and a text message, returns the response to send back
@@ -50,6 +57,14 @@ class SmsController < ApplicationController
       if not validatedResponse[:valid]
         return validatedResponse[:error] + " " + generateReply(store.next)
       else
+        if @@fields[store.next] == "neighborhood"
+          Geocoder.configure(:lookup   => :yandex)
+          geoResult = Geocoder.search(response + ", " + store.city + ", " + store.country)
+          if geoResult.length > 0
+            store.latitude = geoResult[0].latitude
+            store.longitude = geoResult[0].longitude
+          end
+        end
         store.update({@@fields[store.next] => validatedResponse[:value], "next" => store.next+1})
       end
     end

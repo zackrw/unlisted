@@ -56,3 +56,4 @@ end
 
 gem 'twilio-ruby'
 gem 'dotenv-rails', :groups => [:development, :test]
+gem "geocoder", "~> 1.1.9"
