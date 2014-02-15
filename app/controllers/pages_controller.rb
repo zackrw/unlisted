@@ -1,9 +1,11 @@
 class PagesController < ApplicationController
 
   def catchall
+    i18n()
+
     if is_home?(request.host)
       @page_showing = 'showing-home'
-      @categories = ['food', 'pharmacy', 'electronics']
+      @categories = [@food, @pharmacy, @electronics]
       @pages = Store.all
       render :template => 'pages/home'
     else

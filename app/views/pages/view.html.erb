@@ -1,5 +1,5 @@
 <div class="page centered">
-    <a href="/home"><div class="home-link">Home</div></a>
+    <a href="/home"><div class="home-link"><%=@home%></div></a>
     <div class="top">
         <h1 class="name left"><%= @store.name %></h1>
         <h3 class="phone right"><%= @store.phone %></h3>
@@ -19,11 +19,11 @@
     <div class="bottom">
         <div class="bottom-left left">
             <div class="status">
-                <h3 class="updates-heading">Updates</h3>
+                <h3 class="updates-heading"><%=@updates%></h3>
                 <div class="status-text"><%= @store.status %></div>
             </div>
             <div class="hours">
-                <h3 class="hours-heading">Business Hours</h3>
+                <h3 class="hours-heading"><%=@hours%></h3>
                 <% @store.hours.each do |h| %>
                     <div class="hour"><%= h['title'] %>: <%= h['value'] %></div>
                 <% end %>
@@ -43,6 +43,6 @@
     </div>
     <div class="footer">
         <hr>
-        Text 000-000-0000 to create your own Jed page!
+        <%= @create_own %>
     </div>
 </div>
