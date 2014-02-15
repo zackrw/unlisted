@@ -43,7 +43,7 @@ class SmsController < ApplicationController
         store.update(:status => response)
         return "Status updated to: " + store.status
       else
-      return nil
+        return nil
       end
     else
       validatedResponse = validate(store.next, response)
@@ -87,7 +87,7 @@ class SmsController < ApplicationController
     elsif field == "subdomain"
       response = "Choose a subdomain for your website: (<subdomain>.jed.ae)"
     elsif field == "hours"
-      response = "Please enter your hours as day-range : hour-range (Mo-Th : 0900-2100, Fr-Su : 1000-1300):"
+      response = "Please enter your hours as day-range:hour-range (Mo-Th:0900-2100, Fr-Su:1000-1300):"
     else
       response = "Please enter your business " + field
     end
@@ -108,19 +108,19 @@ class SmsController < ApplicationController
       #Iterate over day ranges
       response.split(',').each do |entry|
         if not entry.split(':').length == 2 
-          return {:valid => false, :error => "Day and hour ranges must be split with : ."}
+          return {:valid => false, :error => "Invalid day or hour range."}
         end
         #Get day range and hours value
         value = entry.split(':')[1]
         dayrange = entry.split(':')[0]
         if not dayrange.split('-').length == 2 
-          return {:valid => false, :error => "Day range must be split with - ."}
+          return {:valid => false, :error => "Invalid day range."}
         end
         #Get start and end day indices
         startDay = @@days.index {|day| day.downcase.starts_with?(dayrange.split('-')[0].downcase)}
         endDay = @@days.index {|day| day.downcase.starts_with?(dayrange.split('-')[1].downcase)}
         if not startDay or not endDay
-          return {:valid => false, :error => "Day value(s) not valid."}
+          return {:valid => false, :error => "Invalid day value(s)."}
         end
         #Add to hours json array
         (startDay..endDay).each do |i|
