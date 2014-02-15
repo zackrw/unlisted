@@ -3,14 +3,18 @@ class PagesController < ApplicationController
   def catchall
     if is_home?(request.host)
       @page_showing = 'showing-home'
-      @categories = ['food', 'pharmacy', 'electronics']
-      @pages = Store.all
+      @categories = []
+      Category.all.each do |c|
+        @categories.push(c.name)
+      end
+      @pages = Store.order(:name)
       render :template => 'pages/home'
     else
       @page_showing = 'showing-page'
       page_name = request.host.split('.')[0]
       @store = Store.where(subdomain: page_name).first
       @category = @store.category.name
+      @domain = request.host.split('.')[1]
       render :template => 'pages/view'
     end
   end
@@ -20,6 +24,8 @@ class PagesController < ApplicationController
     threshold = 2
     if host_parts.include?('localhost')
       threshold = 1
+    elsif host_parts.include?('herokuapp')
+      threshold = 3
     end
     host_parts.length <= threshold
   end
@@ -29,7 +35,7 @@ class PagesController < ApplicationController
     if host_parts.include?('localhost')
       redirect_to('http://localhost:3000')
     else
-      redirect_to('http://unlisted.herokuapp.com')
+      redirect_to('http://jedappuae.herokuapp.com')
     end
   end
 
@@ -39,7 +45,7 @@ class PagesController < ApplicationController
     if host_parts.include?('localhost')
       redirect_to("http://#{subdomain}.localhost:3000")
     else
-      redirect_to("http://#{subdomain}.unlisted.herokuapp.com")
+      redirect_to("http://#{subdomain}.jedappuae.herokuapp.com")
     end
   end
 

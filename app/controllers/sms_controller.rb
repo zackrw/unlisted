@@ -50,11 +50,20 @@ class SmsController < ApplicationController
       if not validatedResponse[:valid]
         return validatedResponse[:error] + " " + generateReply(store.next)
       else
+        if @@fields[store.next] == "neighborhood"
+          Geocoder.configure(:lookup   => :yandex)
+          geoResult = Geocoder.search(response + ", " + store.city + ", " + store.country)
+          if geoResult.length > 0
+            store.latitude = geoResult[0].latitude
+            store.longitude = geoResult[0].longitude
+          end
+        end
         store.update({@@fields[store.next] => validatedResponse[:value], "next" => store.next+1})
       end
     end
     if store.next == @@fields.length
       #Setup complete!
+      store.on_profile_complete
       return "Congratulations you've created a website! Send text messages to update your business status"
     else
       return generateReply(store.next)

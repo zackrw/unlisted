@@ -39,6 +39,10 @@ end
 # Use unicorn as the app server
 gem 'unicorn'
 
+# Social gems
+gem 'twitter'
+gem 'fb_graph'
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
@@ -56,3 +60,4 @@ end
 
 gem 'twilio-ruby'
 gem 'dotenv-rails', :groups => [:development, :test]
+gem "geocoder", "~> 1.1.9"

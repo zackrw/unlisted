@@ -1,33 +1,43 @@
-<div class="home centered">
-    <div class="top">
-        <h1 class="left">UAE Pages</h1>
-        <h3 class="right">Putting the UAE online.</h3>
-        <div class="clearfix"></div>
-    </div>
-    <div class="search">
-        <input type="text" class="search-box" placeholder="search">
-    </div>
-    <div class="filters">
-        <h3 class="filters-heading left">Filter by category:</h3>
-        <% @categories.each do |c| %>
-            <div class="filter left" data-category="<%= c %>"><%= c %></div>
-        <% end %>
-        <div class="clearfix"></div>
+<div class="home">
+    <div class="header centered">
+        <div class="top">
+            <h1>جد</h1>
+            <h3 class="left slogan">Putting small businesses online</h3>
+            <h3 class="right">Text 000-000-0000 to start your own page!</h3>
+            <div class="clearfix"></div>
+        </div>
+        <div class="search">
+            <input type="text" class="search-box" placeholder="search">
+        </div>
+        <div class="filters">
+            <h3 class="filters-heading left">Filter by category:</h3>
+            <% @categories.each do |c| %>
+                <div class="filter left" data-category="<%= c %>"><%= c %></div>
+            <% end %>
+            <div class="clearfix"></div>
+        </div>
     </div>
     <div class="pages">
-        <% @pages.each do |p| %>
-            <div class="page-preview" data-name="<%= p[:name] %>"
-                                      data-phone="<%= p[:phone] %>"
-                                      data-slogan="<%= p[:slogan] %>"
-                                      data-status="<%= p[:status] %>"
-                                      data-location="<%= p[:location] %>"
-                                      data-city="<%= p[:city] %>"
-                                      data-country="<%= p[:country] %>"
-                                      data-category="<%= p[:category] %>">
+        <div class='pages-container centered'>
+            <% @pages.each do |p| %>
+                <a href='/view/<%= p[:subdomain] %>' class='biz-name'>
+                    <div class="page-preview"
+                         data-name="<%= p.name %>"
+                         data-phone="<%= p.phone %>"
+                         data-slogan="<%= p.slogan %>"
+                         data-status="<%= p.status %>"
+                         data-location="<%= p.location %>"
+                         data-city="<%= p.city %>"
+                         data-country="<%= p.country %>"
+                         data-category="<%= p.category && p.category.name %>">
 
-                <div class="page-name"><%= p[:name] %></div>
-                <div class="page-phone"><%= p[:phone] %></div>
-            </div>
-        <% end %>
+                        <div class="page-name">
+                            <%= p.name %>
+                        </div>
+                        <div class="page-phone"><%= p.phone %></div>
+                    </div>
+                </a>
+            <% end %>
+        </div>
     </div>
 </div>
