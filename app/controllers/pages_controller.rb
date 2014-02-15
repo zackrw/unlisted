@@ -1,7 +1,5 @@
 class PagesController < ApplicationController
 
-
-
   def view
     @store = {
       phone: '+71 971 340-3492',
@@ -20,6 +18,9 @@ class PagesController < ApplicationController
     }
     @category = 'food'
     @tags = 'yummy, tasty, delicious'
+  end
+
+  def home
   end
 
 end
