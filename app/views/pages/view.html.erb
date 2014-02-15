@@ -1,5 +1,5 @@
 <div class="page centered">
-    <a href="/home"><div class="home-link"><%=@home%></div></a>
+    <a href="/home"><div class="home-link"><%= @home %></div></a>
     <div class="top">
         <h1 class="name left"><%= @store.name %></h1>
         <h3 class="phone right"><%= @store.phone %></h3>
@@ -9,7 +9,7 @@
         <div class="collage">
             <% (1..13).to_a.sort{ rand() - 0.5 }[0..11].each do |i| %>
                 <img src="/assets/collage-<%= @category %><%= i %>.jpg"
-                     width="160" height='160' alt="" />
+                     class="collage-img" width="160" height='160'>
             <% end %>
         </div>
         <div class="collage-overlay"></div>
