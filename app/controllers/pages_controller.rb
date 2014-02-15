@@ -27,7 +27,7 @@ class PagesController < ApplicationController
     if host_parts.include?('localhost')
       redirect_to('http://localhost:3000')
     else
-      redirect_to('http://jedappuae.herokuapp.com')
+      redirect_to('http://jedapp.com')
     end
   end
 
@@ -37,7 +37,7 @@ class PagesController < ApplicationController
     if host_parts.include?('localhost')
       redirect_to("http://#{subdomain}.localhost:3000")
     else
-      redirect_to("http://#{subdomain}.jedappuae.herokuapp.com")
+      redirect_to("http://#{subdomain}.jedapp.com")
     end
   end
 
