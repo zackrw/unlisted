@@ -1,12 +1,10 @@
 class PagesController < ApplicationController
 
   def catchall
+    i18n()
+
     if is_home?(request.host)
       @page_showing = 'showing-home'
-      @categories = []
-      Category.all.each do |c|
-        @categories.push(c.name)
-      end
       @pages = Store.order(:name)
       render :template => 'pages/home'
     else
