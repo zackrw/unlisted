@@ -1,7 +1,7 @@
 class SmsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
-  @@fields = ["name","subdomain","city","location","slogan","category","hours"]
+  @@fields = ["name","subdomain","city","location","neighborhood","slogan","category","hours"]
   @@days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
   
   def index
@@ -35,7 +35,7 @@ class SmsController < ApplicationController
     store = Store.find_by_phone(phone)
     if not store
       #Create a new store
-      store = Store.new({:phone =>  phone, :next => 0});
+      store = Store.new({:phone =>  phone, :next => 0, :country => "UAE"});
       store.save
     elsif not store.next or store.next >= @@fields.length
       #All fields have been filled, message is a status update
@@ -50,6 +50,13 @@ class SmsController < ApplicationController
       if not validatedResponse[:valid]
         return validatedResponse[:error] + " " + generateReply(store.next)
       else
+        if @@fields[store.next] == "neighborhood"
+          geoResult = Geocoder.search(response)
+          if geoResult.length > 0
+            store.lat = geoResult[0].latitude
+            store.lon = geoResult[1].longitude
+          end
+        end
         store.update({@@fields[store.next] => validatedResponse[:value], "next" => store.next+1})
       end
     end
