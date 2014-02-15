@@ -3,47 +3,14 @@ class PagesController < ApplicationController
   def catchall
     if is_home?(request.host)
       @page_showing = 'showing-home'
-      store = {
-        phone: '+71 971 340-3492',
-        name: 'Jake\'s Kitchen',
-        subdomain: 'jakeskitchen',
-        slogan: 'The best food ever',
-        status: 'Jake\'s is currently featuring a two for
-                 one special on margaritas.',
-        location: '26 Institute Way',
-        city: 'Abu Dhabi',
-        country: 'UAE',
-        category: 'food',
-        hours: [
-          { title: 'M-F', value: '8am - 9pm' },
-          { title: 'Sa', value: '10am - 7pm' },
-          { title: 'Su', value: '11am - 5pm' }
-        ]
-      }
       @categories = ['food', 'pharmacy', 'electronics']
-      @pages = [store, store, store, store, store, store, store]
+      @pages = Store.all
       render :template => 'pages/home'
     else
       @page_showing = 'showing-page'
       page_name = request.host.split('.')[0]
-      @store = {
-        phone: '+71 971 340-3492',
-        name: 'Jake\'s Kitchen',
-        slogan: 'The best food ever',
-        subdomain: 'jakeskitchen',
-        status: 'Jake\'s is currently featuring a two for
-                 one special on margaritas.',
-        location: '26 Institute Way',
-        city: 'Abu Dhabi',
-        country: 'UAE',
-        hours: [
-          { title: 'M-F', value: '8am - 9pm' },
-          { title: 'Sa', value: '10am - 7pm' },
-          { title: 'Su', value: '11am - 5pm' }
-        ]
-      }
-      @category = 'food'
-      @tags = 'yummy, tasty, delicious'
+      @store = Store.where(subdomain: page_name).first
+      @category = @store.category.name
       render :template => 'pages/view'
     end
   end
@@ -77,12 +44,3 @@ class PagesController < ApplicationController
   end
 
 end
-
-
-
-
-
-
-
-
-
