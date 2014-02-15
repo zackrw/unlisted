@@ -6,8 +6,10 @@ def index
 end
 
 def receive
+  #Process POST from phone
   message = processResponse(params[:phone],params[:response])
-  
+
+  #POST to phone
   @form_params = {:phone => params[:phone], :message => message};
   render(:action => :index)  
 
