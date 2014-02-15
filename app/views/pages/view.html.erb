@@ -7,18 +7,10 @@
     </div>
     <div class="banner centered">
         <div class="collage">
-            <img src="/assets/collage1.jpg" width="160" alt="" />
-            <img src="/assets/collage2.jpg" width="160" alt="" />
-            <img src="/assets/collage3.jpeg" width="160" alt="" />
-            <img src="/assets/collage4.jpeg" width="160" alt="" />
-            <img src="/assets/collage5.jpeg" width="160" alt="" />
-            <img src="/assets/collage6.jpg" width="160" alt="" />
-            <img src="/assets/collage7.jpeg" width="160" alt="" />
-            <img src="/assets/collage8.jpg" width="160" alt="" />
-            <img src="/assets/collage9.jpg" width="160" alt="" />
-            <img src="/assets/collage10.jpeg" width="160" alt="" />
-            <img src="/assets/collage11.jpg" width="160" alt="" />
-            <img src="/assets/collage12.jpeg" width="160" alt="" />
+            <% (1..13).to_a.sort{ rand() - 0.5 }[0..11].each do |i| %>
+                <img src="/assets/collage-<%= @category %><%= i %>.jpg"
+                     width="160" height='160' alt="" />
+            <% end %>
         </div>
         <div class="collage-overlay"></div>
         <h3 class="slogan text-centered"><%= @store[:slogan] %></h3>
