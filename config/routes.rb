@@ -5,6 +5,11 @@ Unlisted::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pages#catchall'
 
+  get 'sms' => 'sms#index'
+  post 'receive' => 'sms#receive'
+  get 'receive' => 'sms#receive'
+  post 'sms/receive' => 'sms#receive'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
