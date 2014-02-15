@@ -1,12 +1,23 @@
 
 body.showing-home {
-    background-color: $accent-color;
+    background-color: #EAEAEA;
 }
 
 .home {
     color: $super-light-grey;
 
-    .top {
+    .header {
+        width: 100%;
+        background-color: $accent-color;
+        padding-top: 19px;
+        padding-bottom: 20px;
+        h1 {
+            margin-top: 0;
+        }
+    }
+    .top, .search, .filters {
+        margin: auto;
+        width: 960px;
     }
 
     .search {
@@ -39,10 +50,6 @@ body.showing-home {
     .filter.selected {
         background-color: $highlighted-color;
         color: $super-light-grey;
-    }
-    .header {
-        width: 960px;
-        padding-bottom: 20px;
     }
     .pages {
         background-color: #EAEAEA;
