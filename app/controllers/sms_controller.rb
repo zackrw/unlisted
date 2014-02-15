@@ -9,12 +9,6 @@ class SmsController < ApplicationController
   end
   
   def receive
-    response = processResponse(params[:phone],params[:response])
-
-    @form_params= {:phone => params[:phone], :message => response}
-    render(:action => :index);
-
-=begin
     puts "----------------------------------"
     puts "RECEIVING TEXT!"
     puts "----------------------------------"
@@ -34,7 +28,6 @@ class SmsController < ApplicationController
       :body => response
     )
     render :nothing => true
-=end
   end
   
   #Takes in a phone number and a text message, returns the response to send back
