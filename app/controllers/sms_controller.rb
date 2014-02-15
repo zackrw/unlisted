@@ -4,12 +4,6 @@ skip_before_filter :verify_authenticity_token
 
 @@fields = ["name","city","location","slogan"]
 
-twilio_sid = ENV['TWILIO_SID']
-twilio_token = ENV['TWILIO_TOKEN']
-twilio_phone_number = ENV['TWILIO_PHONE_NUMBER']
-
-@@twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
-
   def index
     redirect_to(:action => :receive, :phone => params[:phone]);
   end
@@ -22,7 +16,13 @@ twilio_phone_number = ENV['TWILIO_PHONE_NUMBER']
     message = params["Body"]
     response = processResponse(phone, message)
 
-    @@twilio_client.account.sms.messages.create(
+    twilio_sid = ENV['TWILIO_SID']
+    twilio_token = ENV['TWILIO_TOKEN']
+    twilio_phone_number = ENV['TWILIO_PHONE_NUMBER']
+
+    twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+
+    twilio_client.account.sms.messages.create(
       :from => "+1#{twilio_phone_number}",
       :to => phone,
       :body => response
@@ -31,7 +31,6 @@ twilio_phone_number = ENV['TWILIO_PHONE_NUMBER']
   end
 
   def processResponse(phone,response)
-    binding.pry
     store = Store.find_by_phone(phone)
     if not store
       store = Store.new({:phone =>  phone, :next => 0});
