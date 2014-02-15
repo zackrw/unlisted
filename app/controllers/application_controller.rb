@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
       @traditional = 'تقليدي'
     end
 
-    @categories = [@food, @pharmacy, @electronics, @culture, @shopping,
+    @categories = [@restaurant, @pharmacy, @electronics, @culture, @shopping,
                    @education, @govt, @business, @traditional]
   end
 end
