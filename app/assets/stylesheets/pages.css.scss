@@ -33,13 +33,19 @@
         position: relative;
     }
     .collage {
+        height: 320px;
         img {
             display: block;
             float: left;
         }
     }
+    .collage-img {
+        opacity: 0;
+    }
     .collage-overlay {
         position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 320px;
         background-color: rgba(0, 0, 0, 0.3);
