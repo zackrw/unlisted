@@ -19,7 +19,9 @@ def processResponse(phone,response)
     store = Store.new({:phone =>  '+24 456 456 456', :next => 0});
     response = "Welcome to Jed! Please enter your business " + @@fields[store.next]
   elsif store.next == @@fields.length-1
-    store.status = response
+    if response
+      store.status = response
+    end
     response = "Status updated to " + store.status
   else
     store[@@fields[store.next]] = response
