@@ -25,9 +25,9 @@ class Store < ActiveRecord::Base
 
   def welcome_on_facebook
     page = FbGraph::Page.new(654840051241163)
-    note = page.note!(
+    link = page.link!(
       :access_token => FACEBOOK_ACCESS_TOKEN,
-      :subject => "#{name}, welcome to Jed!",
+      :link => "http://#{subdomain}.jed.ae",
       :message => "Congratulations #{name} from #{city}, " +
                   "#{country}! Welcome to Jed, the simplest " +
                   "way to get your small business online. " +
