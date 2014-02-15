@@ -61,4 +61,12 @@ $(function() {
     }
   }
 
+  var map = $('.map');
+  var mapOptions = {
+    center: new google.maps.LatLng(map.attr('data-lat'), map.attr('data-long')),
+    zoom: 16
+  };
+  var mapEl = new google.maps.Map(map[0], mapOptions);
+
+
 });

@@ -21,13 +21,7 @@ class PagesController < ApplicationController
 
   def is_home?(host)
     host_parts = request.host.split('.')
-    threshold = 2
-    if host_parts.include?('localhost')
-      threshold = 1
-    elsif host_parts.include?('herokuapp')
-      threshold = 3
-    end
-    host_parts.length <= threshold
+    ['localhost', 'www', 'jedappuae'].include?(host_parts[0])
   end
 
   def gohome
