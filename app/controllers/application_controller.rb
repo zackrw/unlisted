@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def i18n
-    if session[:lang] == 'eng'
+    if session[:lang] == 'english'
+      @other_language = 'Arabic'
       @home = 'Home'
       @hours = 'Business Hours'
       @updates = 'Updates'
@@ -24,7 +25,8 @@ class ApplicationController < ActionController::Base
       @business = 'business'
       @traditional = 'traditional'
     else
-      @home = 'Home'
+      @other_language = 'English'
+      @home = ''
       @hours = 'Business Hours'
       @updates = 'Updates'
       @create_own = 'Text 000-000-0000 to create your own page!'

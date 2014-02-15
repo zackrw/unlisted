@@ -22,8 +22,12 @@
         content="<%= @store && @store.slogan || 'Jed puts small businesses online' %>">
 </head>
 <body class="<%= @page_showing %>">
+  <div id='switch-lang' class='centered'>
+    <% @color = @domain ? '#000' : '#fff' %>
+    <a href='/translate' style='color: <%= @color %>'><%= @other_language %></a>
+  </div>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>
