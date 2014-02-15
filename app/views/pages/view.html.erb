@@ -25,7 +25,7 @@
             <div class="hours">
                 <h3 class="hours-heading">Business Hours</h3>
                 <% @store.hours.each do |h| %>
-                    <div class="hour"><%= h[:title] %>: <%= h[:value] %></div>
+                    <div class="hour"><%= h['title'] %>: <%= h['value'] %></div>
                 <% end %>
             </div>
         </div>
