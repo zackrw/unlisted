@@ -6,6 +6,7 @@ Unlisted::Application.routes.draw do
   root 'pages#catchall'
   get '/home' => 'pages#gohome'
   get '/view/:subdomain' => 'pages#goview'
+  get '/translate' => 'pages#translate'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -4,12 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def i18n
-    if session[:lang] == 'eng'
+    if session[:lang] == 'english'
       @home = 'Home'
       @hours = 'Business Hours'
       @updates = 'Updates'
       @create_own = 'Text 000-000-0000 to create your own page!'
-      @slogan = 'Putting small business online'
+      @slogan = 'Putting small businesses online'
       @search = 'search'
       @filter = 'Filter by category:'
 
@@ -24,12 +24,12 @@ class ApplicationController < ActionController::Base
       @business = 'business'
       @traditional = 'traditional'
       
-      @other_language = 'يبرع'
+      @other_language = 'عربي'
     else
-      @home = 'ةيسيئرل ا'
-      @hours = 'لمعل ا ت اقوا'
-      @updates = 'ثيدحت'
-      @create_own = 'ةص اخل ا كتحفص  ءاشن لا  0000-000-000  ةيل اسرا'
+      @home = 'الرئيسية'
+      @hours = 'اوقات العمل'
+      @updates = 'تحديث'
+      @create_own = 'ارسالية 000-000-0000 لانشاءصفحتك الخاصة'
       @slogan = ' وضع المؤسسات الصغرى على الانترنيت'
       @search = 'بحث'
       @filter = 'بحث حسب الفئة'
@@ -44,6 +44,8 @@ class ApplicationController < ActionController::Base
       @education = 'تعليم'
       @business = 'تجارة'
       @traditional = 'تقليدي'
+
+      @other_language = 'English'
     end
 
     @categories = [@restaurant, @pharmacy, @electronics, @culture, @shopping,
