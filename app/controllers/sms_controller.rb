@@ -34,10 +34,13 @@ class SmsController < ApplicationController
   @@status[1] =  "تحديث  محتوى موقعك "
 
   def index
+    puts 'INDEX CALLED'
+    puts params
     redirect_to(:action => :receive, :phone => params[:phone]);
   end
 
   def receive
+    puts params
     puts "----------------------------------"
     puts "RECEIVING TEXT!"
     puts "----------------------------------"

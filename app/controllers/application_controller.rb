@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def i18n 
+  def i18n
     if session[:lang] == 'english'
       @home = 'Home'
       @hours = 'Business Hours'
@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
       @education = 'education'
       @business = 'business'
       @traditional = 'traditional'
-      
+
       @other_language = 'عربي'
       @phone_number = '+1-773-245-1971'
     else
