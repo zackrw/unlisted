@@ -42,17 +42,7 @@ class PagesController < ApplicationController
   end
 
   def translate
-    if session[:lang] == 'english'
-      session[:lang] = 'arabic'
-    else
-      session[:lang] = 'english'
-    end
-
-    if is_home?(request.host)
-      return gohome()
-    else
-      params[:subdomain] = request.host.split('.')[0]
-      return goview()
-    end
+    session[:lang] = session[:lang] == 'english' ? 'arabic' : 'english'
+    redirect_to '/'
   end
 end

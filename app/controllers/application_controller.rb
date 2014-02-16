@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       @education = 'education'
       @business = 'business'
       @traditional = 'traditional'
-      
+
       @other_language = 'عربي'
     else
       @home = 'الرئيسية'
