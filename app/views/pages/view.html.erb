@@ -8,7 +8,7 @@
     <div class="banner centered">
         <div class="collage">
             <% if @category=='restaurant' or @category=='pharmacy' or
-                  @category=='electronics'%>
+                  @category=='electronics' or @category=='optometrist'%>
                 <% (1..13).to_a.sort{ rand() - 0.5 }[0..11].each do |i| %>
                     <img src="/assets/collage-<%= @category %><%= i %>.jpg"
                          class="collage-img" width="160" height='160'>
