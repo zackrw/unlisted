@@ -8,6 +8,12 @@ Unlisted::Application.routes.draw do
   get '/view/:subdomain' => 'pages#goview'
   get '/translate' => 'pages#translate'
 
+  # get 'sms' => 'sms#index'
+  get '/receive/:phone' => 'sms#index'
+  post 'receive' => 'sms#receive'
+  get 'receive' => 'sms#receive'
+
+  get '/custom_test/:subdomain' => 'pages#custom_test'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

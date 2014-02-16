@@ -1,0 +1,11 @@
+Hello!
+<%= form_tag("/receive", method: "post") do %>
+    <table class="form">
+     <tr>
+        <td><%= label_tag(@form_params[:message]) %></td>
+        <td><%= text_field_tag(:response) %></td>
+     </tr>
+    </table>
+    <%= hidden_field_tag(:phone, @form_params[:phone]) %>
+    <%= submit_tag "Submit" %>
+<% end %>

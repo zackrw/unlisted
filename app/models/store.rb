@@ -1,13 +1,12 @@
 class Store < ActiveRecord::Base
-  # attr_accessible :phone, :name, :slogan, :status, :location, :city, :country, :latitude, :longitude, :hours, :subdomain
+  #attr_accessible :phone, :name, :slogan, :status, :location, :city, :country, :latitude, :longitude, :hours, :subdomain
 
   belongs_to :category
   has_and_belongs_to_many :tags
 
-
   def on_profile_complete
-    post_to_twitter
-    post_to_facebook
+    # post_to_twitter
+    # post_to_facebook
   end
 
   def welcome_on_twitter
