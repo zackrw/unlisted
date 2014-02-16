@@ -13,7 +13,7 @@ class SmsController < ApplicationController
   @@invalid =Array.new(2){Array.new} 
   @@congrats = Array.new(2){Array.new}
   @@status =Array.new(2){Array.new} 
-  
+
   @@fields[0] = ["language","name","city","location","neighborhood","slogan","category","hours"]
   @@days[0] = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
   @@category[0] = "Choose a category number for your business"
@@ -150,7 +150,7 @@ class SmsController < ApplicationController
     category = Category.find_by_id(response.to_i)
       if category
         return {:valid => true, :value => category}
-      else 
+      else
         return {:valid => false}
       end
   end
