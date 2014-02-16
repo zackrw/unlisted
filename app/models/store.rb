@@ -19,6 +19,19 @@ class Store < ActiveRecord::Base
     end
   end
 
+  def tweet_status(status)
+    begin
+      client = Twitter::REST::Client.new do |config|
+        config.consumer_key        = TWITTER_CONSUMER_KEY
+        config.consumer_secret     = TWITTER_CONSUMER_SECRET
+        config.access_token        = TWITTER_ACCESS_TOKEN
+        config.access_token_secret = TWITTER_ACCESS_TOKEN_SECRET
+      end
+       client.update("RT from #{name}: #{status}")
+    rescue
+    end
+  end
+
   def welcome_on_twitter
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = TWITTER_CONSUMER_KEY

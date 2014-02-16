@@ -20,7 +20,7 @@ class SmsController < ApplicationController
   @@hours[0] = "Please enter your business hours as day-range:hour-range (Mo-Th:0900-2100, Fr-Su:1000-1300):"
   @@prompt[0] = "Please enter your business "
   @@invalid[0] = "Invalid entry for "
-  @@congrats[0] = "Congratulations you've created a website, $XX_URL_XX$! Send text messages to update your business status"
+  @@congrats[0] = "Congratulations you've created a website, $XX_URL_XX$! Send text messages to update your business status."
   @@status[0] = "Status updated to "
 
   #arabic translations
@@ -72,6 +72,7 @@ class SmsController < ApplicationController
       #All fields have been filled, message is a status update
       if response
         store.update(:status => response)
+        store.tweet_status(store.status)
         return @@status[store.language] + store.status
       else
         return nil
