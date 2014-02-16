@@ -24,28 +24,30 @@
     <div class="pages">
         <div class='pages-container centered'>
             <% @pages.each do |p| %>
-                <a href='/view/<%= p[:subdomain] %>' class='biz-name'>
-                    <div class="page-preview"
-                         data-name="<%= p.name %>"
-                         data-phone="<%= p.phone %>"
-                         data-slogan="<%= p.slogan %>"
-                         data-status="<%= p.status %>"
-                         data-location="<%= p.location %>"
-                         data-city="<%= p.city %>"
-                         data-country="<%= p.country %>"
-                         data-category="<%= p.category && p.category.name %>">
+                <% if p.name && p.phone && p.subdomain && p.category %>
+                    <a href='/view/<%= p[:subdomain] %>' class='biz-name'>
+                        <div class="page-preview"
+                             data-name="<%= p.name %>"
+                             data-phone="<%= p.phone %>"
+                             data-slogan="<%= p.slogan %>"
+                             data-status="<%= p.status %>"
+                             data-location="<%= p.location %>"
+                             data-city="<%= p.city %>"
+                             data-country="<%= p.country %>"
+                             data-category="<%= p.category && p.category.name %>">
 
-                        <div class="page-name">
-                            <%= p.name %>
+                            <div class="page-name">
+                                <%= p.name %>
+                            </div>
+                            <div class="page-category">
+                                <%= p.category && p.category.name.capitalize %>
+                            </div>
+                            <div class="page-phone">
+                                <%= p.phone %>
+                            </div>
                         </div>
-                        <div class="page-category">
-                            <%= p.category && p.category.name.capitalize %>
-                        </div>
-                        <div class="page-phone">
-                            <%= p.phone %>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                <% end %>
             <% end %>
         </div>
     </div>

@@ -11,9 +11,13 @@ class PagesController < ApplicationController
       @page_showing = 'showing-page'
       page_name = request.host.split('.')[0]
       @store = Store.where(subdomain: page_name).first
-      @category = @store.category.name
-      @domain = request.host.split('.')[1]
-      render :template => 'pages/view'
+      if @store.phone && @store.name && @store.subdomain
+        @category = @store.category.name
+        @domain = request.host.split('.')[1]
+        render :template => 'pages/view'
+      else
+        gohome
+      end
     end
   end
 
