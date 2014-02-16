@@ -40,7 +40,7 @@ task :seed_db => :environment do
     'ibiza',
     'cruzparadiso',
     'valhallassymphony',
-    'thegogoroom'
+    'thegogoroom',
   ]
 
   categories = [
@@ -64,9 +64,8 @@ task :seed_db => :environment do
       phone: phones[i],
       name: names[i],
       subdomain: subdomains[i],
-      slogan: 'The best food ever',
-      status: 'Jake\'s is currently featuring a two for
-               one special on margaritas.',
+      slogan: 'The best in town',
+      status: 'We are currently out of the office watching the hackathon.',
       location: '26 Institute Way',
       city: 'Abu Dhabi',
       country: 'UAE',
