@@ -65,7 +65,7 @@ task :seed_db => :environment do
       name: names[i],
       subdomain: subdomains[i],
       slogan: 'The best in town',
-      status: 'We are currently out of the office watching the hackathon.'
+      status: 'We are currently out of the office watching the hackathon.',
       location: '26 Institute Way',
       city: 'Abu Dhabi',
       country: 'UAE',
