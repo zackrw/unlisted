@@ -1,14 +1,22 @@
 class SmsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
-  @@fields = ["name","subdomain","city","location","neighborhood","slogan","category","hours"]
+  @@fields = ["name","city","location","neighborhood","slogan","category","hours"]
   @@days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+  
+  #arabic translations
+  @@fields_arabic = ["name","city","location","neighborhood","slogan","category","hours"]
+  @@days_arabic = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
   
   def index
     redirect_to(:action => :receive, :phone => params[:phone]);
   end
   
   def receive
+    response = processResponse(params[:phone],params[:response])
+    @form_params = {:phone => params[:phone],:message => response}
+    render(:action => :index)
+=begin
     puts "----------------------------------"
     puts "RECEIVING TEXT!"
     puts "----------------------------------"
@@ -28,6 +36,7 @@ class SmsController < ApplicationController
       :body => response
     )
     render :nothing => true
+=end
   end
   
   #Takes in a phone number and a text message, returns the response to send back
@@ -57,6 +66,8 @@ class SmsController < ApplicationController
             store.latitude = geoResult[0].latitude
             store.longitude = geoResult[0].longitude
           end
+        elsif @@fields[store.next] == "name"
+          store.subdomain = response.downcase.gsub(/[^\w]/,'')
         end
         store.update({@@fields[store.next] => validatedResponse[:value], "next" => store.next+1})
       end
