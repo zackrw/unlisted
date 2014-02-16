@@ -2,17 +2,17 @@
 class SmsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
-  @@intro = "مرحبا بكم في "جِد"  اضغط  1 للعربية  Welcome to Jed! Choose 2 for english"
+  @@intro = "مرحبا بكم في جِد  اضغط  1 للعربية  Welcome to Jed! Choose 2 for english"
 
   #Fields and prompts
   @@fields = Array.new(2){Array.new}
   @@days = Array.new(2){Array.new}
-  @@category =Array.new(2){Array.new} 
-  @@hours =Array.new(2){Array.new} 
+  @@category =Array.new(2){Array.new}
+  @@hours =Array.new(2){Array.new}
   @@prompt = Array.new(2){Array.new}
-  @@invalid =Array.new(2){Array.new} 
+  @@invalid =Array.new(2){Array.new}
   @@congrats = Array.new(2){Array.new}
-  @@status =Array.new(2){Array.new} 
+  @@status =Array.new(2){Array.new}
 
   @@fields[0] = ["language","name","category","city","location","neighborhood","hours","slogan"]
   @@days[0] = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
