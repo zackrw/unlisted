@@ -3,21 +3,24 @@ desc 'Seed the database with sample material.'
 task :seed_db => :environment do
 
   restaurant = Category.create({
-    name: 'restaurant'
+    name: 'restaurant',
+    arabic_name: 'مطعم'
   });
   pharmacy = Category.create({
-    name: 'pharmacy'
+    name: 'pharmacy',
+    arabic_name: 'صيدلية'
   });
   electronics = Category.create({
-    name: 'electronics'
+    name: 'electronics',
+    arabic_name: 'إلكترونيات'
   });
-
-
-  delicious = Tag.create({
-    name: 'delicious'
+  optometrist = Category.create({
+    name: 'optometrist',
+    arabic_name: 'متجر نظارات'
   });
-  affordable = Tag.create({
-    name: 'affordable'
+  laundry = Category.create({
+    name: 'laundry',
+    arabic_name: 'مصبغة'
   });
 
   phones = [
@@ -29,34 +32,26 @@ task :seed_db => :environment do
   ]
 
   names = [
-    'Jake\'s Kitchen',
-    'Ibiza',
-    'Cruz Paradiso',
-    'Valhalla\'s Symphony',
-    'The Go-go Room'
+    'الجميل للنظارات',
+    'أبو بدر الالكترونيات',
+    'ازكًدِنيا',
+    'ظافر الصيدلة',
+    'الرافدين للغسيل'
   ]
   subdomains = [
-    'jakeskitchen',
-    'ibiza',
-    'cruzparadiso',
-    'valhallassymphony',
-    'thegogoroom',
+    'الجميلللنظارات',
+    'أبوبدرالالكترونيات',
+    'ازكًدِنيا',
+    'ظافرالصيدلة',
+    'الرافدينللغسيل'
   ]
 
   categories = [
-    pharmacy,
-    restaurant,
+    optometrist,
     electronics,
+    restaurant,
     pharmacy,
-    electronics
-  ]
-
-  tags = [
-    [delicious, affordable],
-    [affordable],
-    [],
-    [delicious],
-    [delicious]
+    laundry
   ]
 
   5.times do |i|
@@ -64,13 +59,12 @@ task :seed_db => :environment do
       phone: phones[i],
       name: names[i],
       subdomain: subdomains[i],
-      slogan: 'The best in town',
-      status: 'We are currently out of the office watching the hackathon.',
-      location: '26 Institute Way',
-      city: 'Abu Dhabi',
-      country: 'UAE',
+      slogan: 'من السهل العثور، فإنك لن تندم',
+      status: 'نحن حالياً خارج المكتب لمتابعة الهاكثون',
+      location: 'شارع زايد الأول',
+      city: 'أبوظبي',
+      country: 'الأمارات العربية المتحدة',
       category: categories[i],
-      tags: tags[i],
       hours: [
         { title: 0, value: '8am - 9pm' },
         { title: 1, value: '8am - 9pm' },

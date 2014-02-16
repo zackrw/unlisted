@@ -1,3 +1,5 @@
+require 'uri'
+
 class PagesController < ApplicationController
 
   def catchall
@@ -11,7 +13,10 @@ class PagesController < ApplicationController
       @page_showing = 'showing-page'
       page_name = request.host.split('.')[0]
       @store = Store.where(subdomain: page_name).first
-      @category = @store.category.name
+      if @store == nil
+        @store = Store.where(subdomain: 'الجميلللنظارات').first
+      end
+      @category = Category.where(id: @store.category_id)
       @domain = request.host.split('.')[1]
       render :template => 'pages/view'
     end

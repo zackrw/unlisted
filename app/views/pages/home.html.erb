@@ -16,7 +16,9 @@
         <div class="filters">
             <h3 class="filters-heading left"><%= @filter %></h3>
             <% @categories.each do |c| %>
-                <div class="filter left" data-category="<%= c %>"><%= c %></div>
+                <div class="filter left" data-category="<%= c[0] %>">
+                  <%= c[1] %>
+                </div>
             <% end %>
             <div class="clearfix"></div>
         </div>
@@ -24,7 +26,7 @@
     <div class="pages">
         <div class='pages-container centered'>
             <% @pages.each do |p| %>
-                <a href='/view/<%= p[:subdomain] %>' class='biz-name'>
+                <a href='/view/<%= URI.encode(p[:subdomain]) %>' class='biz-name'>
                     <div class="page-preview"
                          data-name="<%= p.name %>"
                          data-phone="<%= p.phone %>"
@@ -39,7 +41,7 @@
                             <%= p.name %>
                         </div>
                         <div class="page-category">
-                            <%= p.category && p.category.name.capitalize %>
+                            <%= @categories[p.category.name].capitalize %>
                         </div>
                         <div class="page-phone">
                             <%= p.phone %>

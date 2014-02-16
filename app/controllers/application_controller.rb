@@ -25,6 +25,8 @@ class ApplicationController < ActionController::Base
       @education = 'education'
       @business = 'business'
       @traditional = 'traditional'
+      @optometrist = 'optometrist'
+      @laundry = 'laundry'
       
       @other_language = 'عربي'
       @phone_number = '+1-773-245-1971'
@@ -49,12 +51,17 @@ class ApplicationController < ActionController::Base
       @education = 'تعليم'
       @business = 'تجارة'
       @traditional = 'تقليدي'
+      @optometrist = 'متجر نظارات'
+      @laundry = 'مصبغة'
 
       @other_language = 'English'
       @phone_number = '1971-245-773-1+'
     end
 
-    @categories = [@restaurant, @pharmacy, @electronics, @culture, @shopping,
-                   @education, @govt, @business, @traditional]
+    @categories = Hash['restaurant' => @restaurant,  'pharmacy' => @pharmacy,
+                       'electronics' => @electronics, 'culture' => @culture,
+                       'shopping' => @shopping, 'education' => @education,
+                       'govt' => @govt, 'optometrist' => @optometrist,
+                       'laundry' => @laundry, 'traditional' => @traditional]
   end
 end
