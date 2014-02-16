@@ -88,7 +88,9 @@ class SmsController < ApplicationController
     #Prepare response message to user
     if store.next == @@fields[0].length
       #Setup complete!
+      puts 'CALLING ON PROFILE COMPLETE'
       store.on_profile_complete
+      puts 'TWEETED AND FBD'
       return @@congrats[store.language].gsub('$XX_URL_XX$',
                                        " http://#{store.subdomain}.jedapp.com ")
     else

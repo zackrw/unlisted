@@ -5,6 +5,9 @@ class Store < ActiveRecord::Base
   has_and_belongs_to_many :tags
 
   def on_profile_complete
+    puts '-----------------------------------'
+    puts 'PROFILE COMPLETE'
+    puts '-----------------------------------'
     welcome_on_twitter
     welcome_on_facebook
   end
