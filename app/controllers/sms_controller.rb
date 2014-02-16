@@ -2,7 +2,7 @@
 class SmsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
-  @@intro = "رحبا بكم في 'جِد' اضغط  1 للعربية Welcome to Jed! Choose 2 for english"
+  @@intro = "مرحبا بكم في "جِد"  اضغط  1 للعربية  Welcome to Jed! Choose 2 for english"
 
   #Fields and prompts
   @@fields = Array.new(2){Array.new}
