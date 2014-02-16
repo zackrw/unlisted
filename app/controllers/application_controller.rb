@@ -3,12 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def i18n
+  def i18n 
     if session[:lang] == 'english'
       @home = 'Home'
       @hours = 'Business Hours'
       @updates = 'Updates'
-      @create_own = 'Text +1-773-245-1971 to create your own page!'
+      @create_own = 'to create your own page!'
+      @create_own2 = 'Text'
       @slogan = 'Putting small businesses online'
       @search = 'search'
       @filter = 'Filter by category:'
@@ -23,13 +24,15 @@ class ApplicationController < ActionController::Base
       @education = 'education'
       @business = 'business'
       @traditional = 'traditional'
-
+      
       @other_language = 'عربي'
+      @phone_number = '+1-773-245-1971'
     else
       @home = 'الرئيسية'
       @hours = 'اوقات العمل'
       @updates = 'تحديث'
-      @create_own = 'لانشاء صفحتك الخاصة 1971-245-773-1+ ابعث ارسالية على'
+      @create_own = 'لانشاء صفحتك الخاصة'
+      @create_own2 = 'ابعث ارسالية على'
       @slogan = ' وضع المؤسسات الصغرى على الانترنيت'
       @search = 'بحث'
       @filter = 'بحث حسب الفئة'
@@ -46,6 +49,7 @@ class ApplicationController < ActionController::Base
       @traditional = 'تقليدي'
 
       @other_language = 'English'
+      @phone_number = '1971-245-773-1+'
     end
 
     @categories = [@restaurant, @pharmacy, @electronics, @culture, @shopping,
