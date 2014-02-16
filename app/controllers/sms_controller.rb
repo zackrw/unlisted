@@ -20,7 +20,7 @@ class SmsController < ApplicationController
   @@hours[0] = "Please enter your business hours as day-range:hour-range (Mo-Th:0900-2100, Fr-Su:1000-1300):"
   @@prompt[0] = "Please enter your business "
   @@invalid[0] = "Invalid entry for "
-  @@congrats[0] = "Congratulations you've created a website! Send text messages to update your business status"
+  @@congrats[0] = "Congratulations you've created a website, $XX_URL_XX$! Send text messages to update your business status"
   @@status[0] = "Status updated to "
 
   #arabic translations
@@ -30,7 +30,7 @@ class SmsController < ApplicationController
   @@hours[1] = "من فضلك ادخل ايام و اوقات العمل "
   @@prompt[1] = "من فضلك ادخل "
   @@invalid[1] = "إدخال غير صالح "
-  @@congrats[1] = "تهانينا لقد انشئت موقعك الخاص ! ابعث ارساليات لتحديث محتوى موقعك "
+  @@congrats[1] = "تهانينا لقد انشئت موقعك الخاص !$XX_URL_XX$ ,ابعث ارساليات لتحديث محتوى موقعك "
   @@status[1] =  "تحديث  محتوى موقعك "
 
   def index
@@ -89,7 +89,8 @@ class SmsController < ApplicationController
     if store.next == @@fields[0].length
       #Setup complete!
       store.on_profile_complete
-      return @@congrats[store.language]
+      return @@congrats[store.language].gsub('$XX_URL_XX$',
+                                       " http://#{store.subdomain}.jedapp.com ")
     else
       return generateReply(store)
     end
