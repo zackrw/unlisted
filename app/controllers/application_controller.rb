@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
       @hours = 'Business Hours'
       @updates = 'Updates'
       @create_own = 'Text 000-000-0000 to create your own page!'
-      @slogan = 'Putting small business online'
+      @slogan = 'Putting small businesses online'
       @search = 'search'
       @filter = 'Filter by category:'
 
