@@ -8,8 +8,11 @@ class Store < ActiveRecord::Base
     puts '-----------------------------------'
     puts 'PROFILE COMPLETE'
     puts '-----------------------------------'
-    welcome_on_twitter
-    welcome_on_facebook
+    begin
+      welcome_on_twitter
+      welcome_on_facebook
+    rescue
+    end
   end
 
   def welcome_on_twitter
@@ -19,21 +22,19 @@ class Store < ActiveRecord::Base
       config.access_token        = TWITTER_ACCESS_TOKEN
       config.access_token_secret = TWITTER_ACCESS_TOKEN_SECRET
     end
-     client.update("Congratulations #{name} from #{city}, " +
-                   "#{country}! Welcome to Jed, the simplest " +
-                   "way to get your small business online. " +
-                   "Check them out at http://#{subdomain}.jed.ae")
+     client.update("Welcome to Jed, #{name} from #{city}, #{country}! " +
+                   "Check them out at http://#{subdomain}.jedapp.com")
   end
 
   def welcome_on_facebook
     page = FbGraph::Page.new(654840051241163)
     link = page.link!(
       :access_token => FACEBOOK_ACCESS_TOKEN,
-      :link => "http://#{subdomain}.jed.ae",
+      :link => "http://#{subdomain}.jedapp.com",
       :message => "Congratulations #{name} from #{city}, " +
                   "#{country}! Welcome to Jed, the simplest " +
                   "way to get your small business online. " +
-                  "Check them out at http://#{subdomain}.jed.ae")
+                  "Check them out at http://#{subdomain}.jedapp.com")
   end
 
 end
