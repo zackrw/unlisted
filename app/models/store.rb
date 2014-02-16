@@ -10,6 +10,10 @@ class Store < ActiveRecord::Base
     puts '-----------------------------------'
     begin
       welcome_on_twitter
+    rescue
+    end
+
+    begin
       welcome_on_facebook
     rescue
     end
@@ -22,7 +26,7 @@ class Store < ActiveRecord::Base
       config.access_token        = TWITTER_ACCESS_TOKEN
       config.access_token_secret = TWITTER_ACCESS_TOKEN_SECRET
     end
-     client.update("Welcome to Jed, #{name} from #{city}, #{country}! " +
+     client.update("Welcome, #{name} from #{city}, #{country}! " +
                    "Check them out at http://#{subdomain}.jedapp.com")
   end
 
