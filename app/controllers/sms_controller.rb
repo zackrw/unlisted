@@ -74,15 +74,15 @@ class SmsController < ApplicationController
         return nil
       end
     else
+      #Message is a field update
       validatedResponse = validate(store, response)
       if not validatedResponse[:valid]
         return @@invalid[store.language] + @@fields[store.language][store.next] + " " + generateReply(store)
       else
-        x=@@fields[0]
-        y=validatedResponse[:value]
         store.update({@@fields[0][store.next] => validatedResponse[:value], "next" => store.next+1})
       end
     end
+    #Prepare response message to user
     if store.next == @@fields[0].length
       #Setup complete!
       store.on_profile_complete
@@ -92,6 +92,7 @@ class SmsController < ApplicationController
     end
   end
   
+  #Validate the message and process the response if needed
   def validate(store,response)
     field = @@fields[0][store.next]
     #Response is category id
@@ -99,9 +100,11 @@ class SmsController < ApplicationController
       return validateCategory(response)
     elsif field == "hours"
       return validateHours(response,store)
-    elsif field == "name" or field == "subdomain"
+    elsif field == "name"
       if not response or response.length == 0
         return {:valid => false}
+      else
+        store.update({:subdomain => response.downcase.gsub(/[^\w]/,'')})
       end
     elsif field == "neighborhood"
       Geocoder.configure(:lookup   => :yandex)
@@ -109,8 +112,6 @@ class SmsController < ApplicationController
       if geoResult.length > 0
         store.update({:latitude => geoResult[0].latitude, :longitude => geoResult[0].longitude})
       end
-    elsif field == "name"
-      store.update({:subdomain => response.downcase.gsub(/[^\w]/,'')})
     elsif field == "language"
       if response.to_i == 2
         response = 0
@@ -123,6 +124,7 @@ class SmsController < ApplicationController
     return {:valid => true, :value => response};
   end
   
+  #Generate the response for the user
   def generateReply(store)
     field = @@fields[0][store.next]
     languageId = store.language
