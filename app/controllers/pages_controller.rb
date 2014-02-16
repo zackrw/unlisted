@@ -41,4 +41,15 @@ class PagesController < ApplicationController
     end
   end
 
+  def custom_test
+    subdomain = params[:subdomain]
+    @page_showing = 'showing-page'
+    page_name = subdomain
+    @store = Store.where(subdomain: page_name).first
+    @category = @store.category.name
+    @domain = request.host.split('.')[1]
+    render :template => 'pages/view'
+  end
+
+
 end

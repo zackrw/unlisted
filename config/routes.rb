@@ -12,6 +12,7 @@ Unlisted::Application.routes.draw do
   post 'receive' => 'sms#receive'
   get 'receive' => 'sms#receive'
 
+  get '/custom_test/:subdomain' => 'pages#custom_test'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
