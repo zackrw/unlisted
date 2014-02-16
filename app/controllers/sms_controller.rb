@@ -3,11 +3,11 @@ class SmsController < ApplicationController
 
   @@fields = ["name","subdomain","city","location","neighborhood","slogan","category","hours"]
   @@days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
-  
+
   def index
     redirect_to(:action => :receive, :phone => params[:phone]);
   end
-  
+
   def receive
     puts "----------------------------------"
     puts "RECEIVING TEXT!"
@@ -16,22 +16,20 @@ class SmsController < ApplicationController
     message = params["Body"]
     response = processResponse(phone, message)
 
-    twilio_sid = ENV['TWILIO_SID']
-    twilio_token = ENV['TWILIO_TOKEN']
-    twilio_phone_number = ENV['TWILIO_PHONE_NUMBER']
+    twilio_phone_number = TWILIO_PHONE_NUMBER
 
-    twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+    twilio_client = Twilio::REST::Client.new(TWILIO_SID, TWILIO_TOKEN)
 
     twilio_client.account.sms.messages.create(
-      :from => "+1#{twilio_phone_number}",
+      :from => TWILIO_PHONE_NUMBER,
       :to => phone,
       :body => response
     )
     render :nothing => true
   end
-  
+
   #Takes in a phone number and a text message, returns the response to send back
-  def processResponse(phone,response)
+  def processResponse(phone, response)
     store = Store.find_by_phone(phone)
     if not store
       #Create a new store
