@@ -16,9 +16,14 @@ class PagesController < ApplicationController
       if @store == nil
         @store = Store.where(subdomain: 'الجميلللنظارات').first
       end
-      @category = Category.where(id: @store.category_id)
       @domain = request.host.split('.')[1]
-      render :template => 'pages/view'
+      if @store.phone && @store.name && @store.subdomain
+        @category = Category.where(id: @store.category_id)
+        @domain = request.host.split('.')[1]
+        render :template => 'pages/view'
+      else
+        gohome
+      end
     end
   end
 

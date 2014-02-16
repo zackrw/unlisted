@@ -4,16 +4,16 @@ Unlisted::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'pages#catchall'
-  get '/home' => 'pages#gohome'
-  get '/view/:subdomain' => 'pages#goview'
-  get '/translate' => 'pages#translate'
+  get 'home' => 'pages#gohome'
+  get 'view/:subdomain' => 'pages#goview'
+  get 'translate' => 'pages#translate'
 
   # get 'sms' => 'sms#index'
-  get '/receive/:phone' => 'sms#index'
+  get 'receive/:phone' => 'sms#index'
   post 'receive' => 'sms#receive'
   get 'receive' => 'sms#receive'
 
-  get '/custom_test/:subdomain' => 'pages#custom_test'
+  get 'custom_test/:subdomain' => 'pages#custom_test'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
