@@ -16,7 +16,7 @@ class SmsController < ApplicationController
 
   @@fields[0] = ["language","name","category","city","location","neighborhood","hours","slogan"]
   @@days[0] = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
-  @@category[0] = "Choose a category number for your business"
+  @@category[0] = "Choose a category number for your business, restaurant(1), pharmacy(2), electronics(3)."
   @@hours[0] = "Please enter your business hours as day-range:hour-range (Mo-Th:0900-2100, Fr-Su:1000-1300):"
   @@prompt[0] = "Please enter your business "
   @@invalid[0] = "Invalid entry for "
@@ -26,7 +26,8 @@ class SmsController < ApplicationController
   #arabic translations
   @@days[1] = ["الاثنين","الثلاثاء","الاربعاء","الخميس","الجمعة","السبت","الاحد"]
   @@fields[1] = ["الاسم","المدينة","الفئة","العنوان","الجوار","اوقات العمل","الشعار"]
-  @@category[1] = "اختر رقم الفئة المناسب لمؤسستك "
+  # @@category[1] = "اختر رقم الفئة المناسب لمؤسستك "
+  @@category[1] = "اختيار فئة لعملك، مطعم (1)، والصيدلة (2)، والالكترونيات (3)."
   @@hours[1] = "من فضلك ادخل ايام و اوقات العمل "
   @@prompt[1] = "من فضلك ادخل "
   @@invalid[1] = "إدخال غير صالح "
@@ -136,16 +137,17 @@ class SmsController < ApplicationController
     field = @@fields[0][store.next]
     languageId = store.language
     if field == "category"
-      categories = Category.find(:all)
       response = @@category[languageId]
-      puts response
-      categories.each do |cat|
-        if languageId == 0
-          response << ", " << cat.name << "(" << cat.id.to_s << ")"
-        elsif languageId == 1
-          response << ", " << cat.arabic_name << "(" << cat.id.to_s << ")"
-        end
-      end
+      #categories = Category.find(:all)
+      #response = @@category[languageId]
+      #puts response
+      #categories.each do |cat|
+      #  if languageId == 0
+      #    response << ", " << cat.name << "(" << cat.id.to_s << ")"
+      #  elsif languageId == 1
+      #    response << ", " << cat.arabic_name << "(" << cat.id.to_s << ")"
+      #  end
+      #end
     elsif field == "hours"
       response = @@hours[languageId]
     elsif field == "language"
