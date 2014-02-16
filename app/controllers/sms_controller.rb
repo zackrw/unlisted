@@ -147,9 +147,9 @@ class SmsController < ApplicationController
     elsif field == "hours"
       response = @@hours[languageId]
     elsif field == "language"
-      response == @@intro[languageId]
+      response = @@intro
     elsif field == "location" and languageId == 0
-      response == @@prompt[languageId] + "address"
+      response = @@prompt[languageId] + "address"
     else
       response = @@prompt[languageId] + @@fields[languageId][store.next]
     end
