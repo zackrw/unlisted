@@ -127,10 +127,10 @@ class SmsController < ApplicationController
       else
         return {:valid => false}
       end
-    end    
+    end
     return {:valid => true, :value => response};
   end
-  
+
   #Generate the response for the user
   def generateReply(store)
     field = @@fields[0][store.next]
@@ -138,6 +138,7 @@ class SmsController < ApplicationController
     if field == "category"
       categories = Category.find(:all)
       response = @@category[languageId]
+      puts response
       categories.each do |cat|
         if languageId == 0
           response << ", " << cat.name << "(" << cat.id.to_s << ")"
