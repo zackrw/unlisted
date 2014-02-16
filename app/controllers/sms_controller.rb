@@ -5,7 +5,15 @@ class SmsController < ApplicationController
   @@intro = "مرحبا بكم في تطبيق جِد لاختيار اللغة العربية اضغط على 1 Welcome to Jed! Please choose a language: 2 for english" 
 
   #Fields and prompts
-  @@fields = @@days = @@category = @@hours = @@prompt = @@invalid = @@congrats = @@status = []
+  @@fields = Array.new(2){Array.new}
+  @@days = Array.new(2){Array.new}
+  @@category =Array.new(2){Array.new} 
+  @@hours =Array.new(2){Array.new} 
+  @@prompt = Array.new(2){Array.new}
+  @@invalid =Array.new(2){Array.new} 
+  @@congrats = Array.new(2){Array.new}
+  @@status =Array.new(2){Array.new} 
+  
   @@fields[0] = ["language","name","city","location","neighborhood","slogan","category","hours"]
   @@days[0] = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
   @@category[0] = "Choose a category number for your business"
@@ -18,22 +26,18 @@ class SmsController < ApplicationController
   #arabic translations
   @@days[1] = ["الاثنين","الثلاثاء","الاربعاء","الخميس","الجمعة","السبت","الاحد"]
   @@fields[1] = ["الاسم","المدينة","العنوان","الجوار","الشعار","الفئة","اوقات العمل"]
-  @@category[1] = "اختر رقم الفئة المناسب لمؤسستك"
-  @@hours[1] = "من فضلك ادخل ايام و اوقات العمل"
-  @@prompt[1] = "من فضلك ادخل"
-  @@invalid[1] = "إدخال غير صالح"
-  @@congrats[1] = "تهانينا لقد انشئت موقعك الخاص ! ابعث ارساليات لتحديث محتوى موقعك"
-  @@status[1] =  "arabic status"
+  @@category[1] = "اختر رقم الفئة المناسب لمؤسستك "
+  @@hours[1] = "من فضلك ادخل ايام و اوقات العمل "
+  @@prompt[1] = "من فضلك ادخل "
+  @@invalid[1] = "إدخال غير صالح "
+  @@congrats[1] = "تهانينا لقد انشئت موقعك الخاص ! ابعث ارساليات لتحديث محتوى موقعك "
+  @@status[1] =  "تحديث  محتوى موقعك "
 
   def index
     redirect_to(:action => :receive, :phone => params[:phone]);
   end
   
   def receive
-    response = processResponse(params[:phone],params[:response])
-    @form_params = {:phone => params[:phone],:message => response}
-    render(:action => :index)
-=begin
     puts "----------------------------------"
     puts "RECEIVING TEXT!"
     puts "----------------------------------"
@@ -53,7 +57,6 @@ class SmsController < ApplicationController
       :body => response
     )
     render :nothing => true
-=end
   end
   
   #Takes in a phone number and a text message, returns the response to send back
@@ -77,6 +80,8 @@ class SmsController < ApplicationController
       if not validatedResponse[:valid]
         return @@invalid[store.language] + @@fields[store.language][store.next] + " " + generateReply(store)
       else
+        x=@@fields[0]
+        y=validatedResponse[:value]
         store.update({@@fields[0][store.next] => validatedResponse[:value], "next" => store.next+1})
       end
     end
@@ -110,9 +115,9 @@ class SmsController < ApplicationController
       store.update({:subdomain => response.downcase.gsub(/[^\w]/,'')})
     elsif field == "language"
       if response.to_i == 2
-        store.update(:language => 0)
+        response = 0
       elsif response.to_i == 1
-        store.update(:language => 1)
+        response = 1
       else
         return {:valid => false}
       end
@@ -138,7 +143,7 @@ class SmsController < ApplicationController
     elsif field == "language"
       response == @@intro[languageId]
     else
-      response = @@prompt[languageId] + field
+      response = @@prompt[languageId] + @@fields[languageId][store.next]
     end
     return response
   end
@@ -169,7 +174,7 @@ class SmsController < ApplicationController
         end
         #Get start and end day indices
         startDay = @@days[languageId].index {|day| day.downcase.starts_with?(dayrange.split('-')[0].downcase)}
-        endDay = @@days[langueageId].index {|day| day.downcase.starts_with?(dayrange.split('-')[1].downcase)}
+        endDay = @@days[languageId].index {|day| day.downcase.starts_with?(dayrange.split('-')[1].downcase)}
         if not startDay or not endDay
           return {:valid => false}
         end
