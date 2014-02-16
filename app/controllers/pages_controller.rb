@@ -51,5 +51,8 @@ class PagesController < ApplicationController
     render :template => 'pages/view'
   end
 
-
+  def translate
+    session[:lang] = session[:lang] == 'english' ? 'arabic' : 'english'
+    redirect_to '/'
+  end
 end

@@ -5,7 +5,9 @@
                 <img src="/assets/logo.png" width="120" alt="" />
             </div>
             <h3 class="left slogan"><%= @slogan %></h3>
-            <h3 class="right create"><%= @create_own %></h3>
+            <h3 class="right create">
+                <%= @create_own2 %> <%= @phone_number %> <%= @create_own %>
+            </h3>
             <div class="clearfix"></div>
         </div>
         <div class="search">
@@ -36,7 +38,12 @@
                         <div class="page-name">
                             <%= p.name %>
                         </div>
-                        <div class="page-phone"><%= p.phone %></div>
+                        <div class="page-category">
+                            <%= p.category && p.category.name.capitalize %>
+                        </div>
+                        <div class="page-phone">
+                            <%= p.phone %>
+                        </div>
                     </div>
                 </a>
             <% end %>

@@ -9,8 +9,8 @@ body.showing-home {
     .header {
         width: 100%;
         background-color: $accent-color;
-        padding-top: 19px;
-        padding-bottom: 10px;
+        padding-top: 35px;
+        padding-bottom: 20px;
         h1 {
             margin-top: 0;
         }
@@ -91,6 +91,9 @@ body.showing-home {
     .page-name:hover {
         text-decoration: underline;
     }
+    .page-category {
+        font-weight: 300;
+    }
     .page-phone {
         font-weight: 300;
     }
@@ -107,6 +110,10 @@ body.showing-home {
     .slogan, .create {
         margin-top: 50px;
         font-weight: 300;
+    }
+    .create {
+        width: 400px;
+        text-align: right;
     }
 
     h3 {

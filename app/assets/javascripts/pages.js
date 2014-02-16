@@ -7,6 +7,17 @@ $(function() {
   var searchBox = $('.search-box');
   var filter = $('.filter');
   var pagePreview = $('.page-preview');
+  var collageImg = $('.collage-img');
+  var collageOverlay = $('.collage-overlay');
+
+  imagesLoaded(collageImg, function() {
+    collageImg.animate({
+      opacity: 1
+    }, 600);
+    collageOverlay.animate({
+      opacity: 0.3
+    }, 600);
+  });
 
   /*
    * Search functionality.
