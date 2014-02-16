@@ -10,7 +10,7 @@ body.showing-home {
         width: 100%;
         background-color: $accent-color;
         padding-top: 35px;
-        padding-bottom: 20px;
+        padding-bottom: 32px;
         h1 {
             margin-top: 0;
         }
@@ -48,7 +48,7 @@ body.showing-home {
         background-color: $super-light-grey;
         color: $accent-color;
         padding: 3px 5px;
-        margin-left: 5px;
+        margin-left: 8px;
         @include border-radius(4px);
         cursor: pointer;
     }
@@ -116,7 +116,9 @@ body.showing-home {
     }
 
     input[type=text] {
+        font-size: 18px;
         margin-bottom: 5px;
+        padding: 8px;
         width: 100%
     }
 }

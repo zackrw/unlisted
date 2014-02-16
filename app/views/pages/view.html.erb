@@ -31,15 +31,18 @@
                     </div>
                 <% end %>
             </div>
-        </div>
-        <div class="bottom-right right">
-            <div class="map" data-lat="<%= @store.latitude || '24.4667' %>"
-                             data-long="<%= @store.longitude || '54.3667' %>">
-            </div>
+            <div class='address'>
+                <h3 class="address-heading"><%=@address%></h3>
             <div class="address">
                 <%= @store.location %>,
                 <%= @store.city %>,
                 <%= @store.country %>
+            </div>
+            </div>
+        </div>
+        <div class="bottom-right right">
+            <div class="map" data-lat="<%= @store.latitude || '24.4667' %>"
+                             data-long="<%= @store.longitude || '54.3667' %>">
             </div>
         </div>
         <div class="clearfix"></div>
