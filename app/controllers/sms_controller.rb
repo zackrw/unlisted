@@ -2,7 +2,7 @@
 class SmsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
-  @@intro = "مرحبا بكم في تطبيق جِد لاختيار اللغة العربية اضغط على 1 Welcome to Jed! Please choose a language: 2 for english" 
+  @@intro = "رحبا بكم في 'جِد' اضغط  1 للعربية Welcome to Jed! Choose 2 for english"
 
   #Fields and prompts
   @@fields = Array.new(2){Array.new}
@@ -14,7 +14,7 @@ class SmsController < ApplicationController
   @@congrats = Array.new(2){Array.new}
   @@status =Array.new(2){Array.new} 
 
-  @@fields[0] = ["language","name","city","location","neighborhood","slogan","category","hours"]
+  @@fields[0] = ["language","name","category","city","location","neighborhood","hours","slogan"]
   @@days[0] = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
   @@category[0] = "Choose a category number for your business"
   @@hours[0] = "Please enter your business hours as day-range:hour-range (Mo-Th:0900-2100, Fr-Su:1000-1300):"
@@ -25,7 +25,7 @@ class SmsController < ApplicationController
 
   #arabic translations
   @@days[1] = ["الاثنين","الثلاثاء","الاربعاء","الخميس","الجمعة","السبت","الاحد"]
-  @@fields[1] = ["الاسم","المدينة","العنوان","الجوار","الشعار","الفئة","اوقات العمل"]
+  @@fields[1] = ["الاسم","المدينة","الفئة","العنوان","الجوار","اوقات العمل","الشعار"]
   @@category[1] = "اختر رقم الفئة المناسب لمؤسستك "
   @@hours[1] = "من فضلك ادخل ايام و اوقات العمل "
   @@prompt[1] = "من فضلك ادخل "
@@ -148,6 +148,8 @@ class SmsController < ApplicationController
       response = @@hours[languageId]
     elsif field == "language"
       response == @@intro[languageId]
+    elsif field == "location" and languageId == 0
+      response == @@prompt[languageId] + "address"
     else
       response = @@prompt[languageId] + @@fields[languageId][store.next]
     end
